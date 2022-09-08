@@ -8,5 +8,11 @@ public class Polymorphism1 {
 }
 
 class Person {
+    String name;
+    int age;
+
+    void eat() {
+        System.out.println("밥을 먹습니다");
+    }
 
 }
