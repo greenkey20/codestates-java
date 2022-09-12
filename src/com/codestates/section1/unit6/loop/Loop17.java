@@ -6,6 +6,7 @@ public class Loop17 {
 
     }
 
+    // 문제 hint = Math(square root/제곱근)를 활용해 불필요한 연산을 줄일 수 있음
     public static boolean isPrime(int num) {
         boolean result = false;
 
