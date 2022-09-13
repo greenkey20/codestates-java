@@ -14,16 +14,21 @@ public class Loop18 {
          */
 
         String result = "";
-        int count = 0;
+//        int count = 0;
 
         for (int i = 2; i <= num; i++) {
+            boolean isPrime = true;
+
             for (int j = 2; j < i; j ++) {
                 if (i % j == 0) { // i가 j로 나누어 떨어지면/j가 i의 약수이면 i는 소수가 아님 -> (i + 1)이 소수인지 검사하러 감
+                    isPrime = false;
                     break;
                 }
             }
 
-            result = result + i + "-";
+            if (isPrime) {
+                result = result + i + "-";
+            }
         }
 
         return result.substring(0, result.length() - 1);
