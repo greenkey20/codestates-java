@@ -3,6 +3,7 @@ package com.codestates.section1.unit9.collections;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+// 2022.9.14(수) 오후
 public class ArrayList12 {
     public static int sumAllElements(ArrayList<Integer> arrayList) {
         //TODO..
