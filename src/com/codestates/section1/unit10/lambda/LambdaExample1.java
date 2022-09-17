@@ -1,4 +1,4 @@
-package com.codestates.section1.unit10;
+package com.codestates.section1.unit10.lambda;
 
 // 2022.9.15(목) 15h5
 public class LambdaExample1 {

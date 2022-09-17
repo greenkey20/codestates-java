@@ -23,6 +23,5 @@ public class ArrayList11 {
         System.out.println(list);
 
 //        Vector
-
     }
 }

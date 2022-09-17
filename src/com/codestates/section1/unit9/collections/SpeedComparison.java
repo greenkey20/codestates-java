@@ -14,7 +14,7 @@ public class SpeedComparison {
 
         // 순차적으로 추가
         System.out.println("---------------------------------------");
-        startTime = System.nanoTime();
+        startTime = System.nanoTime(); // returns the current value of the running Java Virtual Machine's high-resolution time source, in nanoseconds
         for (int i = 1; i <= 10000000; i++) arrayList.add(i);
         endTime = System.nanoTime();
         System.out.println("순차적인 추가 - ArrayList : " + Math.round((endTime - startTime) / 1000000 * 100) / 100.0 + "ms");

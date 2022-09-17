@@ -4,14 +4,14 @@ package com.codestates.section1.unit6.loop;
 public class Loop19 {
     public static void main(String[] args) {
         // Java 코드 실행 시간 측정(https://hijuworld.tistory.com/2 참고)
-        long beforeTime = System.currentTimeMillis();
+        long beforeTime = System.currentTimeMillis(); // returns the current time in milliseconds
 
         String output = makePermutationsWithRepetition("0123456789");
         System.out.println(output);
 
         long afterTime = System.currentTimeMillis();
 //        long secDiffTime = (afterTime - beforeTime) / 1000;
-        long diffTime = (afterTime - beforeTime);
+        long diffTime = afterTime - beforeTime;
         System.out.println("main() 실행 소요 시간 = " + diffTime + "밀리초"); // String 인스턴스 사용 시 73 vs StringBuilder 인스턴스 사용 시 2밀리초
     }
 
