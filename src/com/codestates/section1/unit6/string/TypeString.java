@@ -1,4 +1,4 @@
-package com.codestates.section1.unit6;
+package com.codestates.section1.unit6.string;
 
 // 2022.8.30(화) 15h50
 public class TypeString {

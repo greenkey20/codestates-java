@@ -1,4 +1,4 @@
-package com.codestates.section1.unit6;
+package com.codestates.section1.unit6.string;
 
 import java.util.StringTokenizer;
 
