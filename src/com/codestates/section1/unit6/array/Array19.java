@@ -26,6 +26,6 @@ public class Array19 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(fibonacci(8)));
+        System.out.println(Arrays.toString(fibonacci(8))); // [0, 1, 1, 2, 3, 5, 8, 13, 21]
     }
 }
