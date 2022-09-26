@@ -10,7 +10,7 @@ public class QueueIntro {
         Queue<Character> queue = new LinkedList<>(); // 나의 질문 = 왜 linked list 자료형 사용?
         System.out.println(queue); // []
 
-        queue.add('a');
+        queue.offer('a');
         System.out.println(queue); // [a]
 
         queue.add('E');
@@ -25,7 +25,7 @@ public class QueueIntro {
         queue.poll(); // retrieves and removes the head of this queue, or returns null if this queue is empty
         System.out.println(queue); // [E, e, i]
 
-        queue.poll();
+        System.out.println(queue.poll()); // E
         System.out.println(queue); // [e, i]
 
         queue.poll();

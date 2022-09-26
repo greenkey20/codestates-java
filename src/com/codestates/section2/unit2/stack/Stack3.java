@@ -30,7 +30,6 @@ public class Stack3 {
 
         ArrayList<Stack> result = new ArrayList<>();
 
-        // TODO:
         // 만약 start의 인자로 알파벳 대문자가 아닌 다른 데이터가 들어온다면 false를 리턴
         if (!(65 <= start.charAt(0) && start.charAt(0) <= 90 && start.length() == 1)) {
             return null; // 나의 질문 = 메서드 반환형이 ArrayList인데 false(Boolean 값) 반환 가능한가?

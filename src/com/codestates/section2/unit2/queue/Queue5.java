@@ -44,33 +44,42 @@ public class Queue5 {
         }
          */
 
+        for (int i = 0; i < bufferSize; i++) {
+            queue.add(0);
+        }
+
         boolean flag = true;
         int docIndex = 0;
+
+//        int sumQueue = queue.stream().mapToInt(i -> i).sum();
 
         while (flag) {
             result++;
             int sumQueue = queue.stream().mapToInt(i -> i).sum();
 
-            if (queue.size() < bufferSize) {
+            if (queue.size() < bufferSize && docIndex < documents.length - 1) {
                 if (sumQueue + documents[docIndex] <= capacities) {
                     queue.add(documents[docIndex]);
-                    if (docIndex != documents.length - 1) {
-                        docIndex++;
+                    if (docIndex != documents.length - 1) { // IntelliJ는 'docIndex < documents.length' 조건이 왜 항상 true라고 하는 거지?
+                        docIndex += 1;
                     }
-                } else {
-                    queue.add(0);
                 }
+//                else {
+//                    queue.add(0);
+//                }
             } else {
                 queue.poll();
+                sumQueue = queue.stream().mapToInt(i -> i).sum();
 
                 if (sumQueue + documents[docIndex] <= capacities) {
                     queue.add(documents[docIndex]);
                     if (docIndex != documents.length - 1) {
                         docIndex++;
                     }
-                } else {
-                    queue.add(0);
                 }
+//                else {
+//                    queue.add(0);
+//                }
             }
 
             if (sumQueue == 0 && docIndex == documents.length - 1) {
