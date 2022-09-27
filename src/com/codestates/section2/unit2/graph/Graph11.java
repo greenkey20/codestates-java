@@ -42,6 +42,8 @@ public class Graph11 {
         }
          */
 
+        int check = 1;
+
         if (from < to) {
             for (int i = from; i <= to; i++) {
                 for (int j = i + 1; j <= to; j++) {
@@ -57,5 +59,6 @@ public class Graph11 {
 
         }
 
+        return false;
     }
 }
