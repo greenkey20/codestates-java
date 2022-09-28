@@ -2,6 +2,7 @@ package com.codestates.section2.unit2.tree;
 
 import java.util.ArrayList;
 
+// 2022.9.26(월) 11h
 public class TreeImplementation {
     private String value; // 입력 데이터 -> value는 어떠한 값도 들어갈 수 있지만, 현재 구현하는 Tree는 문자열로 제한
     private ArrayList<TreeImplementation> children; // 하위/자식 노드를 저장

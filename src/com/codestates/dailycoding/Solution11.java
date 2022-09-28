@@ -8,6 +8,7 @@ public class Solution11 {
     // 2022.9.27(화) 10h55
     public static String[] removeExtremes(String[] arr) {
         // 가장 짧은 문자열의 길이와 가장 긴 문자열의 길이가 같은 경우는 없음
+        // arr[i].length()는 20 이하 -> int min을 20으로 초기화하고 시작할 수 있음
 
         // arr 배열을 순회하며 String 타입 요소 각각의 길이를 구해서 배열에 담음
         int[] lengths = new int[arr.length];
@@ -37,6 +38,7 @@ public class Solution11 {
 
         // lengths 배열에 담긴 숫자들 중 가장 큰 숫자와 가장 작은 숫자가 담긴 인덱스 파악
         // 가장 짧은 문자열 또는 가장 긴 문자열이 다수일 경우, 나중에 위치한 문자열을 제거 -> 아래와 같이 for문 안에서 min/maxIndex에 담긴 값 업데이트해 가도 됨
+        // 나의 풀이 과정의 문제점 = 내가 충분히 생각을 정리하지 않고 바로 구현하다가, 여기서 각 변수의 초기 값 설정(어떤 값으로 초기화할지), 업데이트 내용 작성에 시간을 너무 많이 씀 ㅠㅠ
         int min = lengths[0];
         int minIndex = 0;
 
@@ -44,6 +46,15 @@ public class Solution11 {
         int maxIndex = 0;
 
         for (int i = 1; i < lengths.length; i++) {
+        /*
+        int min = 0;
+        int minIndex = 0;
+
+        int max = 0;
+        int maxIndex = 0;
+
+        for (int i = 0; i < lengths.length; i++) {
+         */
             if (lengths[i] <= min) {
                 min = lengths[i];
                 minIndex = i;
@@ -90,20 +101,25 @@ public class Solution11 {
     }
 
     public static void main(String[] args) {
+        // Non-static method 'removeExtremesReference(java.lang.String[])' cannot be referenced from a static context
         String[] output = removeExtremes(new String[]{"a", "b", "c", "def"});
         System.out.println(Arrays.toString(output)); // --> ["a"', "b"] vs 11h15 테스트 시 [b, c] -> 가장 짧은/긴 문자열 구하려고 비교 시작 대상 = lengths[] 배열의 첫번째 요소(o) int 기본 값 0(x)
 
         output = removeExtremes(new String[]{"where", "is", "the", "longest", "word"});
         System.out.println(Arrays.toString(output)); // --> ["where", "the", "word"] vs 11h15 테스트 시 [is, the, longest]
+
+        output = removeExtremesReference(new String[]{"where", "is", "the", "longest", "word"});
+        System.out.println(Arrays.toString(output));
     }
 
-    public String[] removeExtremesReference(String[] arr) {
-        //입력된 문자열이 공백일때 null을 리턴합니다.
+    public static String[] removeExtremesReference(String[] arr) {
+        // 입력된 문자열이 공백일때 null을 리턴 -> 나의 질문 = 아래 코드는 입력된 문자열이 없을 때 아닌가? ""이 arr 배열의 원소로 있을 때(도) null을 반환해야 한다는 의미로 나는 이해했는데..?! >.<
         if (arr.length == 0) {
             return null;
         }
-        //최대 길이는 20, 최소 길이는 0으로 기본값을 설정합니다.
-        //가장 작은 인덱스와 가장 긴 문자열의 인덱스를 찾기위해 0으로 기본값을 설정합니다.
+
+        // 최대 길이는 20, 최소 길이는 0으로 기본값을 설정합니다 -> 나의 관찰 = 주석 내용과 구현 내용의 불일치(-> 로직 보고 내 코드 수정/반영 시 헷갈렸음 ㅠㅠ)
+        // 가장 작은 인덱스와 가장 긴 문자열의 인덱스를 찾기 위해 0으로 기본값을 설정합니다.
         int shortestLen = 20;
         int longestLen = 0;
         int shortestIdx = 0;
@@ -123,6 +139,11 @@ public class Solution11 {
                 shortestIdx = i;
             }
         }
+
+        // 테스트용 출력문
+        System.out.println("가장 짧은 문자열을 가진 인덱스 = " + shortestIdx);
+        System.out.println("가장 긴 문자열을 가진 인덱스 = " + longestIdx);
+
         //결과를 넣어줄 새로운 배열을 선언합니다. 최소 문자열과 최대 문자열을 제외하기 떄문에 -2만큼의 배열을 선언합니다.
         String[] result = new String[arr.length - 2];
         int curIndex = 0;
