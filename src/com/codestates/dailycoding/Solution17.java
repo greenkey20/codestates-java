@@ -25,6 +25,7 @@ public class Solution17 {
         return String.format("%.2f", squareRoot); // squareRoot 변수(실수/double 자료형)에 담긴 값을 소수점 아래 2자리의 부동소수점 수로 형식 맞추고, String 자료형으로 출력
     }
 
+    // reference code 공부 필요
     public static String computeSquareRootReference(int num) {
         double[] diffs = new double[]{1, 0.1, 0.01, 0.001}; // 소수점 3자리부터 반올림하기 때문에, 배열에 소수점 자리만큼 double값을 선언, 할당
         double base = 1; // 초기값을 1로 설정

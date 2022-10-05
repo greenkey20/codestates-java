@@ -21,6 +21,7 @@ public class Solution16 {
         return true;
     }
 
+    // reference code 공부 필요
     public boolean isIsogramReference(String str) {
         //입력된 문자열이 공백일 경우 true를 리턴합니다.
         if (str.length() == 0) return true;
