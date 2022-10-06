@@ -21,28 +21,26 @@ public class Solution16 {
         return true;
     }
 
-    // reference code 공부 필요
+    // reference code 공부 필요 -> 2022.10.6(목) 23h40 ok
     public boolean isIsogramReference(String str) {
-        //입력된 문자열이 공백일 경우 true를 리턴합니다.
+        // 입력된 문자열이 공백일 경우 true를 리턴합니다.
         if (str.length() == 0) return true;
 
-        //사용된 알파벳을 저장할 HashMap을 선언합니다.
+        // 사용된 알파벳을 저장할 HashMap을 선언
         HashMap<Character, String> cache = new HashMap<Character, String>();
 
-        //입력된 전체 문자열을 모두 소문자로 변환합니다.
+        // 입력된 전체 문자열을 모두 소문자로 변환
         str = str.toLowerCase();
 
-        //입력된 문자열을 순회하며
-        for (int i = 0; i < str.length(); i++) {
-            //HashMap에 이미 해당 알파벳이 저장되어 있다면
-            if (cache.containsKey(str.charAt(i))) {
-                //false를 리턴합니다.
-                return false;
+        for (int i = 0; i < str.length(); i++) { // 입력된 문자열을 순회하며
+            if (cache.containsKey(str.charAt(i))) { // HashMap에 이미 해당 알파벳이 저장되어 있다면
+                return false; // false를 리턴
             }
-            //HashMap에 해당 문자열이 저장되어 있지 않다면, 저장합니다.
-            cache.put(str.charAt(i), "Exists");
+
+            cache.put(str.charAt(i), "Exists"); // HashMap에 해당 문자열이 저장되어 있지 않다면, 저장합니다 -> 2022.10.6(목) 23h40 나의 생각 = map의 value는 메서드에서 큰 의미/쓸모가 없는 것 같은데, 그러면 등장한 str.charAt(i)를 set에 담아둘 수 있지 않을까?
         }
-        //모든 문자열을 순회한다면 true를 리턴합니다.
+
+        // 모든 문자열을 순회했다면 true를 리턴
         return true;
     }
 }

@@ -25,7 +25,7 @@ public class Solution17 {
         return String.format("%.2f", squareRoot); // squareRoot 변수(실수/double 자료형)에 담긴 값을 소수점 아래 2자리의 부동소수점 수로 형식 맞추고, String 자료형으로 출력
     }
 
-    // reference code 공부 필요
+    // reference code 공부 필요 -> 2022.10.6(목) 23h55 num = 6일 때 반복문 돌며 실행하는 것 한 단계씩 종이/펜 써보고 이해는 함 -> 이런 구현 방법/접근 방식이 있음을 이해하고, 어떻게 적용할 수 있을지, 나의 처음 ideation과 연결지어 생각해보자
     public static String computeSquareRootReference(int num) {
         double[] diffs = new double[]{1, 0.1, 0.01, 0.001}; // 소수점 3자리부터 반올림하기 때문에, 배열에 소수점 자리만큼 double값을 선언, 할당
         double base = 1; // 초기값을 1로 설정
