@@ -16,8 +16,12 @@ public class Solution24 {
             int check = sample[i];
 
             // sample[i] 요소/check가 base[j]와 같은지 확인
-            for (int j = 0; j < base.length; j++) {
+            /*
+            for (int j = 0; j < base.length; j++) { // IntelliJ의 refactoring 제안 = 향상된 for문
                 if (check == base[j]) { // 같은 경우
+             */
+            for (int b : base) { // IntelliJ의 refactoring 제안 = 향상된 for문
+                if (check == b) { // 같은 경우
                     flags[i] = 1; // sample.length 크기로 만든 별도의 배열 flags의 i번째 요소를 1로 바꿈
                     break; // 내부 반복문 더 돌릴 필요 없이, 외부 반복문으로 나가서 외부 반복문 순회 계속함
                 }
@@ -30,11 +34,14 @@ public class Solution24 {
             sum += flag;
         }
 
+        /*
         if (sum == sample.length) {
             return true;
         } else {
             return false;
         }
+         */
+        return sum == sample.length; // IntelliJ의 refactoring 제안 >.<
     }
 
     /* 문제 풀이 과정 회고
