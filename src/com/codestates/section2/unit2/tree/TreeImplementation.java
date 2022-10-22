@@ -120,7 +120,7 @@ public class TreeImplementation {
         return check;
     }
 
-    // TreeImplementation 객체 출력 시
+    // TreeImplementation 객체 출력 시 -> 일단 IntelliJ 자동완성으로 만든 메서드
     // e.g. TreeImplementation{value='0', children=[TreeImplementation{value='1', children=null}, TreeImplementation{value='2', children=null}, TreeImplementation{value='3', children=null}, TreeImplementation{value='4', children=null}, TreeImplementation{value='5', children=null}]}
     @Override
     public String toString() {
@@ -131,7 +131,7 @@ public class TreeImplementation {
     }
 }
 
-class Run {
+class RunTreeImplementation {
     public static void main(String[] args) {
         TreeImplementation rootNode = new TreeImplementation("0");
 //        TreeImplementation rootNode = new TreeImplementation();

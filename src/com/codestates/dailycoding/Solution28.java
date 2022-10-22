@@ -63,9 +63,31 @@ public class Solution28 {
     }
 
     public static void main(String[] args) {
-        boolean test1 = balancedBrackets("(((((((((())))))))))");
-        System.out.println(test1); // v1에서는 false
+        // 코드 제출 시 테스트케이스
+        String[] testCases = {"(((((((((())))))))))", "())()(()", "(())()(())", "[](){}", "()", "[(]{)}", "(", "[[[{{{((()))}}}]]]", ")", "[]}{()", ")(", ""};
+        boolean[] testResults = new boolean[12];
 
+        for (int i = 0; i < testCases.length; i++) {
+            testResults[i] = balancedBrackets(testCases[i]);
+            System.out.println((i + 1) + "번 테스트케이스 결과 = " + testResults[i]);
+        }
+        /* 예상 결과
+        1번 테스트케이스 결과 = true -> v1 통과 못함
+        2번 테스트케이스 결과 = false
+        3번 테스트케이스 결과 = true -> v1 통과 못함
+        4번 테스트케이스 결과 = true
+        5번 테스트케이스 결과 = true
+        6번 테스트케이스 결과 = false -> v1 통과 못함
+        7번 테스트케이스 결과 = false
+        8번 테스트케이스 결과 = true -> v1 통과 못함
+        9번 테스트케이스 결과 = false
+        10번 테스트케이스 결과 = false
+        11번 테스트케이스 결과 = false
+        12번 테스트케이스 결과 = true
+         */
+
+//        boolean test1 = balancedBrackets("(((((((((())))))))))");
+//        System.out.println(test1); // true vs v1에서는 false
         /* 테스트케이스 결과에 대해 반복문 사용해서 출력할 수 있을지 실험해 본 것
         for (int i = 1; i <= 8; i++) {
             String name = "test" + i;
@@ -73,6 +95,7 @@ public class Solution28 {
         }
          */
 
+        // 문제에 주어진 입/출력 예시
         boolean output1 = balancedBrackets("[](){}");
         System.out.println(output1); // true
 
@@ -81,6 +104,5 @@ public class Solution28 {
 
         boolean output3 = balancedBrackets("[(]{)}");
         System.out.println(output3); // false vs v1에서는 true
-
     }
 }
