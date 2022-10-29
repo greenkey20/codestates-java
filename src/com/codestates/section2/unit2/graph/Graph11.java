@@ -70,7 +70,7 @@ public class Graph11 {
         return false;
          */
 
-        // 2022.10.23(일) 17h10 복습 시 아래와 같이 작성하다보니, 정확히 몇 번이나 반복문을 돌려야 하는지 알 수 없는 것 같다..
+        // 2022.10.23(일) 17h10 복습 시 아래와 같이 작성하다보니, 정확히 몇 번이나 반복문을 돌려야 하는지 알 수 없는 것 같다 -> 2022.10.29(토) 12h10 재귀로 작성해보기 + 16h10 코플릿 통과
         /*
         for (int i = 0; i < matrix.length; i++) {
             if (matrix[from][i] == 1) {
@@ -82,6 +82,22 @@ public class Graph11 {
             }
         }
          */
+        int[][] currentMatrix = new int[matrix.length][];
+        for (int i = 0; i < currentMatrix.length; i++) {
+            currentMatrix[i] = Arrays.copyOf(matrix[i], matrix[i].length);
+        }
+
+        if (from == to) return true;
+
+        int[] fromAdjacencyList = currentMatrix[from];
+
+        for (int i = 0; i < fromAdjacencyList.length; i++) {
+            if (fromAdjacencyList[i] == 1) {
+                fromAdjacencyList[i] = 0;
+                if (getDirections(currentMatrix, i, to)) return true;
+            }
+
+        }
 
         return false;
     }
@@ -126,8 +142,8 @@ public class Graph11 {
         // 입력된 출발 지점의 1차원 배열을 순회
         for (int i = 0; i < currentMatrix[from].length; i++) {
             if (currentMatrix[from][i] == 1) { // 길이 존재한다면
-                currentMatrix[from][i] = 0; // 해당 루트를 순회했다고 표시(1 -> 0으로 변경)
-                // 표시된 행렬과, 출발지점을 현재 지점인 i로 변경하여 재귀함수를 실행합니다. 재귀함수가 끝까지 도달하였을때 true를 반환한 경우 true를 반환합니다.
+                currentMatrix[from][i] = 0; // 해당 루트를 순회했다고 표시 = 1 -> 0으로 변경
+                // 표시된 행렬과, 출발 지점을 현재 지점인 i로 변경하여 재귀함수를 실행 -> 재귀 함수가 끝까지 도달했을 때 true를 반환한 경우 true 반환
                 if (getDirections(currentMatrix, i, to)) return true;
             }
         }
@@ -136,39 +152,36 @@ public class Graph11 {
         return false;
     }
 
-   // 큐를 사용한 풀이
-   public boolean getDirectionsReference2(int[][] matrix, int from, int to) {
-     //연결 리스트를 사용하여 큐를 선언합니다.
-     Queue<Integer> queue = new LinkedList<>();
-     //첫 시작점으로 from을 할당합니다.
-     queue.add(from);
+    // queue를 사용한 풀이 -> queue = 방문할 곳
+    public boolean getDirectionsReference2(int[][] matrix, int from, int to) {
+        // 연결 리스트를 사용하여 큐를 선언 -> 2022.10.29(토) 17h 나의 질문 = 왜 LinkedList 클래스/자료형을 사용하는가?
+        Queue<Integer> queue = new LinkedList<>();
+        // 첫 시작점으로 from을 할당
+        queue.add(from);
 
-     // 방문했다는 것을 표시하기 위해 1차원 배열을 생성합니다. 초기값은 false로 생성됩니다.
-     boolean[] isVisited = new boolean[matrix.length];
-     // 첫 정점 방문 여부를 표시합니다.
-     isVisited[from] = true;
+        // 방문했다는 것을 표시하기 위해 정점 수만큼의 크기/길이를 가지는 1차원 배열을 생성 -> 각 원소의 초기 값은 false로 생성됨
+        boolean[] isVisited = new boolean[matrix.length];
+        // 첫 정점 방문 여부 표시
+        isVisited[from] = true;
 
-     // queue(방문할 곳)의 사이즈가 0이 될 때까지 반복합니다.
-     while(queue.size() > 0) {
+        // queue의 사이즈가 0이 될 때까지 반복합니다.
+        while (queue.size() > 0) {
+            // queue에서 정점을 하나 빼서 now에 할당합니다.
+            int now = queue.poll();
 
-       // queue에서 정점을 하나 빼서 now에 할당합니다.
-       int now = queue.poll();
+            // 목적지인지 검사하고, 목적지라면 true를 반환
+            if (now == to) return true;
 
-       // 목적지인지 검사하고, 목적지라면 true를 반환합니다.
-       if(now == to) return true;
+            // 해당 정점의 간선들을 확인
+            for (int next = 0; next < matrix[now].length; next++) {
+                if (matrix[now][next] == 1 && !isVisited[next]) { // 만약 간선이 있고 + 방문하지 않았다면
+                    queue.add(next); // queue에 next를 넣음(다음 정점으로 가기 위해)
+                    isVisited[next] = true; // 해당 정점을 방문했다는 것을 표시
+                }
+            }
+        }
 
-       // 해당 정점의 간선들을 확인합니다.
-       for(int next = 0; next < matrix[now].length; next++) {
-         // 만약, 간선이 있고 방문하지 않았다면
-         if(matrix[now][next] == 1 && !isVisited[next]) {
-           // queue에 next를 넣습니다. (다음 정점으로 가기 위해)
-           queue.add(next);
-           // 해당 정점을 방문했다는 것을 표시합니다.
-           isVisited[next] = true;
-         }
-       }
-     }
-     // 길이 없다면 false를 반환합니다.
-     return false;
-   }
+        // 길이 없다면 false를 반환
+        return false;
+    }
 }
