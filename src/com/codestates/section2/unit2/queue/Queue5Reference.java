@@ -7,10 +7,10 @@ import java.util.Queue;
 // 2022.9.23(금) 14h35 내 코드가 무한loop에 빠진 것 같은데, 오류를 찾기 어려워서 참고하기로 함 ㅠㅠ
 public class Queue5Reference {
     public int queuePrinter(int bufferSize, int capacities, int[] documents) {
-        //결과를 담을 변수를 선언 초기화합니다.
+        // 결과를 담을 변수를 선언 초기화
         int count = 0;
 
-        //인쇄 환경을 담을 큐를 선언합니다. 큐는 추상 인터페이스로, LinkedList, 우선순위큐로 구현할 수 있습니다.
+        // 인쇄 환경을 담을 큐를 선언 <- 큐는 추상 인터페이스로, LinkedList, 우선순위큐로 구현할 수 있음
         Queue<Integer> queue = new LinkedList<>();
 
         //선언한 큐를 0으로 채워줍니다.
