@@ -22,13 +22,19 @@ public class Solution34 {
 
         int time = K % 4;
 
+        if (time == 0) {
+            return matrix;
+        }
+
         // rotatedMatrix의 0~3번째 행을 각각 만들어나감 -> 각 행에서 0~3번째 열을 만들어나감
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 switch (time) {
+                    /*
                     case 0: // 문제 풀 때도 얼핏 생각했지만, reference 코드 보니 이 경우는 굳이 반복문 돌릴 필요 없음 -> 바로 matrix 반환하면 됨
                         rotatedMatrix[i][j] = matrix[i][j];
                         break;
+                     */
                     case 1:
                         rotatedMatrix[i][j] = matrix[n - 1 - j][i];
                         break;
