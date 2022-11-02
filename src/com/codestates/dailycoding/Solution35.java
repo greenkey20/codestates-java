@@ -46,17 +46,15 @@ public class Solution35 {
 
     public static void main(String[] args) {
         int[] output = quickSort(new int[]{3, 1, 21});
-        System.out.println(output);
+        System.out.println(Arrays.toString(output));
 
         output = quickSort(new int[]{5, 4, 3, 2, 1});
-        System.out.println(output);
+        System.out.println(Arrays.toString(output));
 
         output = quickSort(new int[]{1, 2, 43, 100, 21, 43});
-        System.out.println(output);
+        System.out.println(Arrays.toString(output));
 
         output = quickSort(new int[]{20, -10, -11, 2, 29});
-        System.out.println(output);
-
-
+        System.out.println(Arrays.toString(output));
     }
 }
