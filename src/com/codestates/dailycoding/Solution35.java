@@ -6,9 +6,9 @@ public class Solution35 {
     // 2022.11.1(화) 10h30
     public static int[] quickSort(int[] arr) {
 		/* 오름차순으로 quick 정렬 구현 -> i < j일 때 arr[i] <= arr[j]
-    quick 정렬 = 분할 정복 알고리즘
-    knou 교과서 내용 다시 읽어봄 -> 코딩/구현 필요 -> knou 교과서 알고리즘 따라서 일단 대충(동작에 대한 깊은 생각/검증 안 하고ㅠㅠ) 구현해봄
-    */
+        quick 정렬 = 분할 정복 알고리즘
+        knou 교과서 내용 다시 읽어봄 -> 코딩/구현 필요 -> knou 교과서 알고리즘 따라서 일단 대충(동작에 대한 깊은 생각/검증 안 하고ㅠㅠ) 구현해봄
+        */
 
         // 문제를 더 이상 쪼갤 수 없을 때
         if (arr.length == 1) {
