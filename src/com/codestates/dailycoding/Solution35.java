@@ -11,7 +11,7 @@ public class Solution35 {
         */
 
         // 문제를 더 이상 쪼갤 수 없을 때
-        if (arr.length == 1) {
+        if (arr.length <= 1) {
             return arr;
         }
 
@@ -27,16 +27,16 @@ public class Solution35 {
         int right = arr.length - 1;
 
         while (left < right) {
-            while (left < arr.length && arr[left] < arr[0]) left++;
-            while (right > 0 && arr[right] >= arr[0]) right--; // ArrayIndexOutOfBoundsException
+            while (left < arr.length && arr[left] < arr[0]) left++; // pivot보다 큰 수 찾기
+            while (right > 0 && arr[right] >= arr[0]) right--; // pivot보다 작은 수 찾기; arr[right]에서 ArrayIndexOutOfBoundsException
 
             if (left < right) {
-                int temp = right;
-                right = left;
-                left = temp;
+                int temp = arr[right];
+                arr[right] = arr[left];
+                arr[left] = temp;
             } else {
-                int temp = right;
-                right = arr[0];
+                int temp = arr[right];
+                arr[right] = arr[0];
                 arr[0] = temp;
             }
         }
