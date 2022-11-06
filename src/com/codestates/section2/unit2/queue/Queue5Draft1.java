@@ -53,12 +53,14 @@ public class Queue5Draft1 {
 
         boolean flag = true;
         int docIndex = 0;
+        boolean isLastDocInQueue = false;
 
 //        int sumQueue = queue.stream().mapToInt(i -> i).sum();
 
         while (flag) {
             result++; // result += 1과 같이 써도 결과는 동일하게 나옴
             queue.poll(); // 1초가 지나면 일단 queue의 맨 앞에 있는 작업은 처리해서 빠져나감 -> 2022.11.7(월) 1h15 드디어 테스트케이스 2건에 대한 무한루프는 탈출 + 단, 각각 4, 7이라는 결과가 나옴 -> 로직 수정 필요
+//            System.out.println(result + "초에 queue = " + queue); // TODO 테스트용 콘솔 출력
             int sumQueue = queue.stream().mapToInt(i -> i).sum(); // queue에 남아있는 작업/문서들의 크기의 합 구하기
 
             // 2022.11.7(월) 1h10 오늘 읽어보니 아래 로직으로는 풀기 어려울 것 같다 + 아래 로직 필요 없는 것 같다
@@ -98,6 +100,14 @@ public class Queue5Draft1 {
                 } else { // '현재 queue에 있는 작업들의 크기 + 금번 처리해야 할 문서의 크기'가 프린터 용량보다 큰 경우 = 새로운 문서를 queue에 받아들일 수 없음
                     queue.add(0);
                 }
+            } else {
+                if (sumQueue + documents[docIndex] <= capacities && isLastDocInQueue == false) { // '현재 queue에 있는 작업들의 크기 + 금번 처리해야 할 문서의 크기'가 프린터 용량보다 같거나 작은 경우
+                    queue.add(documents[docIndex]); // 금번 처리할 문서를 queue로 받아들임
+                    sumQueue = queue.stream().mapToInt(i -> i).sum(); // 2022.11.7(월) 2h Eddie와 함께 debugging with a condition 'result == 5' -> 아래 main() 테스트케이스 2개에 대해서는 의도한대로 동작하지만, 코플릿 테스트케이스 4개 통과 못함
+                    isLastDocInQueue = true;
+                } else { // '현재 queue에 있는 작업들의 크기 + 금번 처리해야 할 문서의 크기'가 프린터 용량보다 큰 경우 = 새로운 문서를 queue에 받아들일 수 없음
+                    queue.add(0);
+                }
             }
             // 2022.11.7(월) while문 1번 돌 때마다 콘솔 출력한 결과 확인해보고, 1h55 수정 -> 다시 무한루프에 빠짐
 
@@ -105,10 +115,10 @@ public class Queue5Draft1 {
                 flag = false;
             }
 
-            System.out.println(result + "초에 queue = " + queue); // TODO 테스트용 콘솔 출력
+//            System.out.println(result + "초에 queue = " + queue + ", sumQueue = " + sumQueue); // TODO 테스트용 콘솔 출력
         }
 
-        return result + 1;
+        return result;
     }
 
     public static void main(String[] args) {
@@ -119,6 +129,16 @@ public class Queue5Draft1 {
 
         int output1 = queuePrinter(bufferSize1, capacities1, documents1);
         System.out.println(output1); // 8
+        /* 1초에 queue = [0, 7], sumQueue = 0
+        2초에 queue = [7, 0], sumQueue = 7
+        3초에 queue = [0, 4], sumQueue = 0
+        4초에 queue = [4, 5], sumQueue = 4
+        5초에 queue = [5, 0], sumQueue = 5
+        6초에 queue = [0, 6], sumQueue = 6
+        7초에 queue = [6, 0], sumQueue = 6
+        8초에 queue = [0, 0], sumQueue = 0
+        8
+         */
 
         // test case2
         int bufferSize2 = 3;
@@ -127,5 +147,21 @@ public class Queue5Draft1 {
 
         int output2 = queuePrinter(bufferSize2, capacities2, documents2);
         System.out.println(output2); // 14
+        /* 1초에 queue = [0, 0, 7], sumQueue = 0
+        2초에 queue = [0, 7, 0], sumQueue = 7
+        3초에 queue = [7, 0, 0], sumQueue = 7
+        4초에 queue = [0, 0, 4], sumQueue = 0
+        5초에 queue = [0, 4, 5], sumQueue = 4
+        6초에 queue = [4, 5, 0], sumQueue = 9
+        7초에 queue = [5, 0, 0], sumQueue = 5
+        8초에 queue = [0, 0, 6], sumQueue = 0
+        9초에 queue = [0, 6, 2], sumQueue = 6
+        10초에 queue = [6, 2, 0], sumQueue = 8
+        11초에 queue = [2, 0, 3], sumQueue = 5
+        12초에 queue = [0, 3, 0], sumQueue = 3
+        13초에 queue = [3, 0, 0], sumQueue = 3
+        14초에 queue = [0, 0, 0], sumQueue = 0
+        14
+         */
     }
 }
