@@ -6,13 +6,17 @@ public class Solution39 {
     // 2022.11.7(월) 10h15
     public static int[] heapSort(int[] arr) {
 		/* 오름차순으로 최소(min) heap(정렬, root node = 최소 값) 구현 -> i < j일 때 arr[i] <= arr[j]
-    arr의 요소들은 -1000 이상 1000 이하의 정수 + arr.length는 1000 이하
-    Java에서는 쉽게 heap 사용 가능 <- PriorityQueue<Integer> heap = new PriorityQueue<Integer>()
+        arr의 요소들은 -1000 이상 1000 이하의 정수 + arr.length는 1000 이하
+        Java에서는 쉽게 heap 사용 가능 <- PriorityQueue<Integer> heap = new PriorityQueue<Integer>()
 
-    나의 질문 = heap(이진 탐색 트리의 일종?)에는 중복 요소 없는 게 맞나?
+        나의 질문 = heap(이진 탐색 트리의 일종?)에는 중복 요소 없는 게 맞나? -> (최소)heap은 완전 이진 트리로써, 각 노드의 값은 자신의 자식 노드의 값보다 작거나 같다
 
-    knou 교과서 내용 다시 읽어봄 -> 코딩/구현 필요
-    */
+        knou 교과서 내용 다시 읽어봄 -> 코딩/구현 필요
+        단계1) 초기 heap 구축
+         - 방법1 = arr의 각 원소에 대한 heap에서의 삽입 과정 반복
+         - 방법2 = arr를 우선 완전 이진 트리로 만듦 -> 값 비교를 통해 노드의 값을 서로 교환
+        단계2) 루트 노드에 존재하는 최소값 삭제
+        */
 
         return arr;
     }
