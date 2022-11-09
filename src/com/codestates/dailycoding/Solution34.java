@@ -4,6 +4,7 @@ import com.codestates.dailycoding.references.Solution34Reference;
 
 public class Solution34 {
     // 2022.10.31(월) 10h30 -> 11h25 테스트케이스 6번 '배열을 시계방향으로 입력받은 횟수만큼 회전한 배열을 리턴해야 합니다' 통과 못하는데, IntelliJ 실행 시 입/출력 예시대로 나오는데, 왜인지, 해당 테스트케이스가 구체적으로 어떤 경우를 테스트하는 것인지 잘 모르겠음
+    // 2022.11.9(수) 0h15 문제 다시 꼼꼼히 읽어보면 'advanced = 세로와 가로의 길이가 각각 M, N인 2차원 M X N 배열을 시계방향으로 90도씩 K번 회전시킨 배열을 리턴해 보기' 조건 처리해야 테스트케이스 6번 통과한다고 함
     public static int[][] rotateMatrix(int[][] matrix, int K) {
 		/* matrix = 2차원 n x n 배열, 원소들은 int 타입 데이터 -> 시계 방향으로 90도씩 K번 회전 -> 2차원 배열 return
 		입/출력 예시를 k % 4 = 1 ~ 4인 경우 회전한 결과를 종이에 써보고(matrix의 index 값들을 기준으로)
