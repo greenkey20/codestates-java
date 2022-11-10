@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class Solution41 {
     // 2022.11.9(수) 10h25 -> 10h40 1차 제출 = 테스트케이스4 및 5 통과 못함
-    public static int binarySearch(int[] arr, int target) {
+    public static int binarySearchDraft(int[] arr, int target) {
 		/* 이진 탐색 알고리즘(O(logN) 성능) -> target이 오름차순 정렬된 정수의 배열 arr에 있으면 arr 배열에서의 인덱스 값 리턴 vs 없는 경우 -1을 리턴
-    urclass section2 이진 탐색 알고리즘 페이지 다시 한 번 보기
-    */
+        urclass section2 이진 탐색 알고리즘 페이지 다시 한 번 보기
+        */
         if (arr.length == 1) {
             if (arr[0] == target) {
                 return 0;
@@ -21,15 +21,34 @@ public class Solution41 {
         int mid = arr.length / 2;
         if (target < arr[mid]) {
             int[] leftArr = Arrays.copyOf(arr, mid);
-            result = binarySearch(leftArr, target);
+            result = binarySearchDraft(leftArr, target);
         } else if (target > arr[mid]) {
             int[] rightArr = Arrays.copyOfRange(arr, mid + 1, arr.length);
-            result = binarySearch(rightArr, target);
+            result = binarySearchDraft(rightArr, target);
         } else {
             result = mid;
         }
 
         return result;
+    }
+
+    // 2022.11.10(목) 10h35 knou 교과서 보면서 새로 작성해봄 -> binarySearch() 재귀 호출하고 반환 값을 어떻게 처리해야 할지 잘 모르겠음
+    public static int binarySearch(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+        int mid = arr.length / 2;
+
+        if (left > right) return -1; // 이 라인의 의미 아직 이해 못함 -> 10h45 나의 생각 = arr의 길이가 0/right의 값이 -1인 경우 재귀 호출 탈출?
+
+        if (target == arr[mid]) {
+            return mid;
+        } else if (target < arr[mid]) {
+            int[] leftArr = Arrays.copyOf(arr, mid);
+            return binarySearch(leftArr, target);
+        } else {
+            int[] rightArr = Arrays.copyOfRange(arr, mid + 1, arr.length);
+            return binarySearch(rightArr, target);
+        }
     }
 
     public static void main(String[] args) {
