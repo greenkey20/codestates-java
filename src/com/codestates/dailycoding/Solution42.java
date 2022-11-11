@@ -18,6 +18,10 @@ public class Solution42 {
 
         Arrays.sort(arrCombined);
 
+        return binarySearch(arrCombined, k); // 결국 2진 탐색 제대로 공부하고 와야 함
+    }
+
+    public int binarySearch(int[] arr, int target) {
         return 0;
     }
 }
