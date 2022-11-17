@@ -70,6 +70,6 @@ public class Solution41 {
         System.out.println(output); // 3
 
         output = binarySearch(new int[]{3, 6, 7, 8, 9, 21, 31, 32}, 31);
-        System.out.println(output); // 6 vs 1차 테스트 시 1이 나옴
+        System.out.println(output); // 6 vs 1차 테스트 시 1이 나옴 -> 2022.11.14(월) 8h10 디버깅해보니 return mid 시 원본 배열 잘라서 재귀 호출 인자로 보낸 부분 배열의 인덱스가 반환되어서, 의도한대로 결과가 안 나오는 것 같은데, 어떻게 수정해야 할지 잘 모르겠음
     }
 }

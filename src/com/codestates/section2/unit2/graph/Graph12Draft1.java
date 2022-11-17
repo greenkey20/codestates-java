@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 // 2022.9.26(월) 15h20
-public class Graph12 {
+public class Graph12Draft1 {
     public static int connectedVertices(int[][] edges) {
         ArrayList<HashSet<Integer>> list = new ArrayList<>();
 

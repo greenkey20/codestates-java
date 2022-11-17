@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 // 2022.11.6(일) 23h55
-public class Graph12Study {
+public class Graph12Draft2 {
     public int connectedVertices(int[][] edges) {
         final int[] bigger = {0};
 
