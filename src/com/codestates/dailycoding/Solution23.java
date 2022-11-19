@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Solution23 {
     // 2022.10.13(목) 9h50 -> 10h10 모든 테스트 케이스 통과
-    // 나의 질문 = 코플릿에서도 fibonacci() 메서드를 static으로 만들어주지 않으면 '실행 시간을 초과했습니다'로 실행이 제대로 되지 않는데, 왜 그런 걸까?
+    // 나의 질문 = 코플릿에서도 fibonacci() 메서드를 static으로 만들어주지 않으면 '실행 시간을 초과했습니다'로 실행이 제대로 되지 않는데, 왜 그런 걸까? -> 2022.11.17(목) 14h50 나의 생각/질문 = 내가 현재/처음에 제출한 코드는 문제에서 요구하는 효율적인 알고리즘이 아님 + knou 동적 프로그래밍 피보나치 예제(성능 O(n)) 보다가 memorization과 dynamic programming은 관계가 있는 것인가?
+    // google 'memoization vs dynamic programming' -> https://stackoverflow.com/questions/6184869/what-is-the-difference-between-memoization-and-dynamic-programming
     public static int fibonacci(int num) {
         // 피보나치 수열 중 num(0 이상의 정수)번째 항의 수를 리턴
         // 재귀함수를 이용해 구현해야 함, 반복문(for/while) 사용 금지, 함수 fibonacci()가 반드시 재귀함수일 필요는 없음
