@@ -1,7 +1,5 @@
 package com.codestates.dailycoding;
 
-import java.util.ArrayList;
-
 public class Solution23 {
     // 2022.10.13(목) 9h50 -> 10h10 모든 테스트 케이스 통과
     // 나의 질문 = 코플릿에서도 fibonacci() 메서드를 static으로 만들어주지 않으면 '실행 시간을 초과했습니다'로 실행이 제대로 되지 않는데, 왜 그런 걸까? -> 2022.11.17(목) 14h50 나의 생각/질문 = 내가 현재/처음에 제출한 코드는 문제에서 요구하는 효율적인 알고리즘이 아님 + knou 동적 프로그래밍 피보나치 예제(성능 O(n)) 보다가 memorization과 dynamic programming은 관계가 있는 것인가?
@@ -50,12 +48,6 @@ public class Solution23 {
         System.out.println(output); // 610
     }
 
-    // naive solution -> O(2^N) -> 나의 질문 = 재귀 호출의 시간 복잡도는 어떻게 계산하지?
-    // public int fibonacci(int num) {
-    // 	if (num <= 1) return num;
-    // 	return fibonacci(num - 1) + fibonacci(num - 2);
-    // }
-
     /* dynamic with memoization = 이미 해결한 문제의 정답을 따로 기록해두고, 다시 해결하지 않는 기법 -> O(N) -> 나의 질문 = 이 알고리즘의 시간 복잡도는 어떻게 계산하지?
     e.g. fibo(10)
        = fibo(9) + fibo(8)
@@ -67,21 +59,5 @@ public class Solution23 {
      3. 시간복잡도가 O(n)인 재귀함수로 피보나치 수열 구하기 https://baechu-story.tistory.com/9
      4. google 'memoization fibonacci java'
      */
-    // reference1
-    public int fibonacciReference1(int num) {
-        ArrayList<Integer> memo = new ArrayList<>();
-        memo.add(0);
-        memo.add(1);
-
-        return aux(memo, num);
-    }
-
-    public int aux(ArrayList<Integer> memo, int num) {
-        if (memo.size() <= num) {
-            memo.add(aux(memo, num - 1) + aux(memo, num - 2));
-        }
-        return memo.get(num);
-    }
-
     // reference2
 }

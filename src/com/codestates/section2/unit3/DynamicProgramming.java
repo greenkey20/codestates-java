@@ -1,5 +1,6 @@
 package com.codestates.section2.unit3;
 
+// 2022.11.19(토) 23h55
 public class DynamicProgramming {
     public long ocean(int target, int[] type) {
         long[] bag = new long[target + 1];
