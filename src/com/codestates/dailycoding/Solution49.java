@@ -17,9 +17,11 @@ public class Solution49 {
 		LIS를 계산하는 효율적인 알고리즘(O(N^2))이 존재함 + 쉽지 않기 때문에 바로 레퍼런스 코드를 보고 이해하는 데 집중하기
 		LIS의 길이 대신 LIS 자체를 리턴하는 함수를 구현해 보기
 		*/
-        Stack<Integer> IS = new Stack<>();
+        // 16h45 v2 작성 -> 16h50 입/출력예시2도 의도한 대로 동작하긴 하는데(3 returned), 일반적으로 적용 가능한 코드인지 아직 정확히 모르겠음 -> 코플릿 테스트케이스 9개 중 5개는 통과
+        int result = 1;
 
         for (int i = 0; i < arr.length - 1; i++) {
+            Stack<Integer> IS = new Stack<>();
             int current = arr[i];
             IS.push(current);
 
@@ -30,10 +32,15 @@ public class Solution49 {
                     IS.push(next);
                 }
             }
+
+            if (IS.size() > result) {
+                result = IS.size();
+            }
         }
 
 //        return IS.size() > 1 ? IS.size() : 1;
-        return Math.max(IS.size(), 1); // IntelliJ의 suggestion에 따라 수정
+//        return Math.max(IS.size(), 1); // IntelliJ의 suggestion에 따라 수정
+        return result;
     }
 
     public static void main(String[] args) {
