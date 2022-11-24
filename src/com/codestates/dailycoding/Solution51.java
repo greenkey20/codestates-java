@@ -1,5 +1,7 @@
 package com.codestates.dailycoding;
 
+import java.util.Arrays;
+
 public class Solution51 {
     // 2022.11.24(목) 10h30
     public int LCS(String str1, String str2) {
@@ -13,8 +15,29 @@ public class Solution51 {
 
         10h55 데일리코딩 49번 레퍼런스 공부 완료 + 이 문제 입/출력 예시 살펴봄 -> 어떻게 풀어야 할지 잘 모르겠어서, 오늘은 레퍼런스 바로 공부해보기로 함
         */
-        int result = 0;
+        int M = str1.length();
+        int N = str2.length();
 
-        return result;
+        int[][] memo = new int[M + 1][N + 1];
+        for (int[] data : memo) Arrays.fill(data, -1);
+
+        return compareOneByOne(0, 0, 0, memo, str1, str2);
+    }
+
+    public int compareOneByOne(int left, int right, int len, int[][] memo, String str1, String str2) {
+        if (memo[left][right] != -1) return memo[left][right];
+
+        if (left == str1.length() || right == str2.length()) return 0;
+
+        if (str1.charAt(left) == str2.charAt(right)) {
+            memo[left][right] = 1 + compareOneByOne(left + 1, right + 1, len + 1, memo, str1, str2);
+            return memo[left][right];
+        }
+
+        memo[left][right] = Math.max(
+                compareOneByOne(left + 1, right, len, memo, str1, str2),
+                compareOneByOne(left, right + 1, len, memo, str1, str2)
+        );
+        return memo[left][right];
     }
 }
