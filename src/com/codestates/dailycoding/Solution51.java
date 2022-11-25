@@ -18,17 +18,21 @@ public class Solution51 {
         int M = str1.length();
         int N = str2.length();
 
-        int[][] memo = new int[M + 1][N + 1];
+        int[][] memo = new int[M + 1][N + 1]; // 2022.11.25(금) 11h5 나의 생각 = 왜 이런 식으로 memoization해야 하는 건지도 이해 안 됨
         for (int[] data : memo) Arrays.fill(data, -1);
+        int left = 0;
+        int right = 0;
 
-        return compareOneByOne(0, 0, 0, memo, str1, str2);
+        return compareOneByOne(left, right, 0, memo, str1, str2);
     }
 
     public int compareOneByOne(int left, int right, int len, int[][] memo, String str1, String str2) {
         if (memo[left][right] != -1) return memo[left][right];
 
+        // lcs가 존재하지 않으면 0 반환
         if (left == str1.length() || right == str2.length()) return 0;
 
+        // 2022.11.25(금) 11h 나의 생각 = wow, 내가 이 로직을 이해할 수 있을까..? -> 11h5 일단 오늘 문제 풀러 가자
         if (str1.charAt(left) == str2.charAt(right)) {
             memo[left][right] = 1 + compareOneByOne(left + 1, right + 1, len + 1, memo, str1, str2);
             return memo[left][right];

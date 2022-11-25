@@ -1,5 +1,7 @@
 package com.codestates.dailycoding;
 
+import java.util.ArrayList;
+
 public class Solution23 {
     // 2022.10.13(목) 9h50 -> 10h10 모든 테스트 케이스 통과
     // 나의 질문 = 코플릿에서도 fibonacci() 메서드를 static으로 만들어주지 않으면 '실행 시간을 초과했습니다'로 실행이 제대로 되지 않는데, 왜 그런 걸까? -> 2022.11.17(목) 14h50 나의 생각/질문 = 내가 현재/처음에 제출한 코드는 문제에서 요구하는 효율적인 알고리즘이 아님 + knou 동적 프로그래밍 피보나치 예제(성능 O(n)) 보다가 memorization과 dynamic programming은 관계가 있는 것인가?
@@ -22,10 +24,27 @@ public class Solution23 {
          */
 
         // 문제를 더 이상 쪼갤 수 없는 경우 = 0번째 피보나치 수는 0, 1번째 피보나치 수는 1
+        /*
         if (num == 0 || num == 1) return num;
 
         // 더 작은 단위로 쪼갤 수 있는 경우
         return fibonacci(num - 1) + fibonacci(num - 2);
+         */
+
+        // 2022.11.25(금) 10h25 memoization으로 구현한 dynamic programming 풀이 reference 참고하며 직접 쳐보기
+        ArrayList<Integer> memo = new ArrayList<>();
+        memo.add(0); // 피보나치 수열의 첫번째 요소 정의
+        memo.add(1); // 피보나치 수열의 두번째 요소 정의
+
+        return fibMemoized(memo, num);
+    }
+
+    public static int fibMemoized(ArrayList<Integer> memo, int num) {
+        if (memo.size() <= num) { // 2022.11.25(금) 10h35 나의 생각 = 여전히 이런 조건은 어떻게 생각해낼 수 있을지 막막하다.. 2022.11.20(일) 새벽에 재귀 흐름 써가며 로직 확인해 봤으나, 여전히 명확히 이해 안 됨/잘 와닿지 않음
+            memo.add(fibMemoized(memo, num - 1) + fibMemoized(memo, num - 2));
+        }
+
+        return memo.get(num);
     }
 
     public static void main(String[] args) {
