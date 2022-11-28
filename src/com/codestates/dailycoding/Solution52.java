@@ -27,7 +27,9 @@ public class Solution52 {
         Set<Integer> uglyNumsSet = new HashSet<>();
 
         while (uglyNumsSet.size() == n) {
+            for (int i = 2; i < 999999999; i++) { // int 표현 가능 범위 내 충분히 큰 숫자를 임의로 가져옴
 
+            }
         }
 
         // set에 담긴 숫자들을 uglyNumsArr에 담음
