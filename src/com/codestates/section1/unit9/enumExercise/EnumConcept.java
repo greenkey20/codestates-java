@@ -73,7 +73,7 @@ public class EnumConcept {
                 break;
             case WINTER:
                 System.out.println("이 계절은 겨울입니다");
-        }
+        } // '이 계절은 가을입니다' 선택됨
 
         // switch문 example4)
         SeasonEnum seasonEnum = SeasonEnum.SPRING;
@@ -89,15 +89,46 @@ public class EnumConcept {
                 break;
             case WINTER:
                 System.out.println("이 계절은 겨울입니다");
-        }
+        } // '이 계절은 봄입니다' 선택됨
 
         // enum에서 사용할 수 있는 메서드들
         Level level = Level.MEDIUM;
 
-        Level[] allLevels = Level.values();
+        Level[] allLevels = Level.values(); // 열거 배열 values() = 모든 열거 객체/상수들을 배열로 리턴
         for (Level lv : allLevels) {
-            System.out.printf("%s=%d%n", lv.name(), lv.ordinal());
+            System.out.printf("%s = %d%n", lv.name(), lv.ordinal());
+            /* String name() = 열거 객체가 가지고 있는 문자열/상수명을 리턴
+            int ordinal() = 열거 객체의 순번(0부터 시작) 리턴
+
+            allLevels에 담긴 각각의 열거 객체/상수의 이름 및 순번을 format대로 출력
+            LOW = 0
+            MEDIUM = 1
+            HIGH = 2
+             */
         }
+
+        // 2022.11.29(화) 17h35 이어서 학습
+        Level findLevel1 = Level.valueOf("LOW"); // 열거 타입 valueOf(String name) = 주어진 문자열과 이름이 일치하는 열거 객체/상수 리턴
+        System.out.println(findLevel1); // LOW
+        System.out.println(Level.LOW == Level.valueOf("LOW")); // true <- valueOf() 호출로부터 반환된 상수가 의도했던 상수와 일치하는지 여부 확인
+
+//        Level findLevel2 = Level.valueOf("MEDIU"); // IllegalArgumentException 예외 발생 <- No enum constant com.codestates.section1.unit9.enumExercise.Level.MEDIU
+//        System.out.println(findLevel2);
+        // 예외 발생한 라인 이후의 코드들은 실행되지 않음 + Process finished with exit code 1 vs 정상 종료 시 Process finished with exit code 0
+
+        switch (level) {
+            case LOW:
+                System.out.println("낮은 레벨");
+                break;
+            case MEDIUM:
+                System.out.println("중간 레벨");
+                break;
+            case HIGH:
+                System.out.println("높은 레벨");
+                break;
+        } // '중간 레벨' 선택됨
+
+        System.out.println(Level.LOW.compareTo(Level.HIGH)); // int compareTo(비교할 열거 객체) = 주어진 매개값과 비교해서 순번 차이를 리턴 -> 0 - 2 = -2 반환
     }
 }
 
@@ -137,7 +168,7 @@ class FrameworksClass {
 // 해결책3 = enum(열거형)을 활용한 상수 정의 -> 상수 이름 중복x + 타입 안정성 보장 + 간결/단순하고 가독성 좋은 코드 + switch문에서도 사용/작동 가능 + 여러 상수들/변경되지 않는 한정적인 데이터를 보다 편리하게/효과적으로 선언/관리 가능
 enum SeasonEnum {
     SPRING, // 각각의 열거 상수 = (열거)객체, 자동적으로 0부터 시작하는 정수 값이 할당되어 각 상수를 가리킴
-    SUMMER,
+    SUMMER, // 정수값 1 할당
     FALL,
     WINTER
 }
