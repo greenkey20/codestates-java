@@ -57,6 +57,7 @@ public class Graph10 {
                 if (edgesLength < edges[i][j]) edgesLength = edges[i][j];
             }
         }
+
         // matrix의 뼈대를 잡습니다.
         // max로 구한 최대값에 1을 더하여 array를 생성합니다.(0번째부터 있기 때문입니다)
         // 자동으로 모든 배열의 요소는 0으로 만들어집니다.
