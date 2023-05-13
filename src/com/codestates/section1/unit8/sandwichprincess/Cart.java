@@ -1,6 +1,7 @@
 package com.codestates.section1.unit8.sandwichprincess;
 
 import com.codestates.section1.unit8.sandwichprincess.product.Product;
+import com.codestates.section1.unit8.sandwichprincess.product.ProductRepository;
 import com.codestates.section1.unit8.sandwichprincess.product.subproduct.Drink;
 import com.codestates.section1.unit8.sandwichprincess.product.subproduct.Sandwich;
 import com.codestates.section1.unit8.sandwichprincess.product.subproduct.SandwichSet;
@@ -13,7 +14,25 @@ import static com.codestates.section1.unit8.sandwichprincess.common.Utils.printL
 // 2023.5.12(금) 22h10
 public class Cart {
     private Product[] cartItems = new Product[0];
+
+    // 2023.5.13(토) 23h45
+    private ProductRepository productRepository; // productRepository = 상품 정보 저장 + 상품 정보에 접근하는 역할까지 겸비해야 하는 객체
     private Scanner scanner = new Scanner(System.in);
+
+    public Cart(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    public void addToCart(int id) {
+        Product product;
+
+        for (Product p : productRepository.getAllProducts()) {
+            if (p.getId() == id) {
+                product = p;
+            }
+        }
+
+    }
 
     public void printCart() {
         printLine();
