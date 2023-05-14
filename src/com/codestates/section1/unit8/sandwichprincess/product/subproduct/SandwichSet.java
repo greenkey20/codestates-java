@@ -9,9 +9,9 @@ public class SandwichSet extends Product {
     private Side side;
     private Drink drink;
 
-    // 생성자
-    public SandwichSet(long id, String name, int price, int kcal, Sandwich sandwich, Side side, Drink drink) {
-        super(id, name, price, kcal);
+    // 생성자 -> 2023.5.14(일) 11h45 composeSet() 메서드 작성하며 수정
+    public SandwichSet(String name, int price, int kcal, Sandwich sandwich, Side side, Drink drink) {
+        super(name, price, kcal);
         this.sandwich = sandwich;
         this.side = side;
         this.drink = drink;

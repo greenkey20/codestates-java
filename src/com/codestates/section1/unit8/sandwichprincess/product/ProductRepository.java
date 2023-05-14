@@ -18,4 +18,16 @@ public class ProductRepository {
     public Product[] getAllProducts() {
         return PRODUCTS;
     }
+
+    // 객체의 세부적인/내부 동작을 객체 내부로 감춤 = 캡슐화-> 객체 간 결합도(coupling) 낮춤 = 객체지향적 설계 = 변화/확장에 유연
+    public Product findById(int productId) {
+        for (Product product : PRODUCTS) {
+            if (product.getId() == productId) {
+                return product;
+            }
+        }
+
+        // 주문자가 입력한 productId가 없는 번호인 경우, null 반환
+        return null;
+    }
 }

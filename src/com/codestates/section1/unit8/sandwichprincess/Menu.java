@@ -16,19 +16,23 @@ public class Menu {
     }
 
     // 2023.5.12(금) 21h45
+
+    /**
+     * 전체 메뉴 출력
+     */
     public void printMenu() {
         printLine();
         System.out.println("[메뉴]");
         System.out.println();
 
         // 샌드위치 출력
-        printSandwiches(); // refactoring > extract method
+        printSandwiches(true); // refactoring > extract method
 
         // 사이드 출력
-        printSides();
+        printSides(true);
 
         // 음료 출력
-        printDrinks();
+        printDrinks(true);
 
         printLine();
 
@@ -39,43 +43,51 @@ public class Menu {
         System.out.print("메뉴를 선택해 주세요 > ");
     }
 
-    private void printSandwiches() {
+    // 2023.5.14(일) 11h50 composeSet() 메서드 작성하며 수정
+    private void printSandwiches(boolean printPrice) {
         System.out.println("- 샌드위치");
 
         for (Product product : products) {
             if (product instanceof Sandwich) {
-                printEachMenu(product);
+                printEachMenu(product, printPrice);
             }
         }
 
         System.out.println();
     }
 
-    private void printSides() {
+    // 2023.5.14(일) 11h50 composeSet() 메서드 작성하며 수정
+    protected void printSides(boolean printPrice) {
         System.out.println("- 사이드");
 
         for (Product product : products) {
             if (product instanceof Side) {
-                printEachMenu(product);
+                printEachMenu(product, printPrice);
             }
         }
 
         System.out.println();
     }
 
-    private void printDrinks() {
+    // 2023.5.14(일) 11h50 composeSet() 메서드 작성하며 수정
+    protected void printDrinks(boolean printPrice) {
         System.out.println("- 음료");
 
         for (Product product : products) {
             if (product instanceof Drink) {
-                printEachMenu(product);
+                printEachMenu(product, printPrice);
             }
         }
 
         System.out.println();
     }
 
-    private static void printEachMenu(Product product) {
-        System.out.printf("[%d] %s %5dKcal %5d원\n", product.getId(), product.getName(), product.getKcal(), product.getPrice());
+    // 2023.5.14(일) 11h45 composeSet() 메서드 작성하며 수정
+    private static void printEachMenu(Product product, boolean printPrice) {
+        if (printPrice) {
+            System.out.printf("[%d] %s %5dKcal %5d원\n", product.getId(), product.getName(), product.getKcal(), product.getPrice());
+        } else {
+            System.out.printf("[%d] %s %5dKcal\n", product.getId(), product.getName(), product.getKcal());
+        }
     }
 }
