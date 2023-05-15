@@ -57,7 +57,7 @@ public class Menu {
     }
 
     // 2023.5.14(일) 11h50 composeSet() 메서드 작성하며 수정
-    protected void printSides(boolean isSet) {
+    public void printSides(boolean isSet) {
         if (!isSet) {
             System.out.println("- 사이드");
         }
@@ -72,7 +72,7 @@ public class Menu {
     }
 
     // 2023.5.14(일) 11h50 composeSet() 메서드 작성하며 수정
-    protected void printDrinks(boolean isSet) {
+    public void printDrinks(boolean isSet) {
         if (!isSet) {
             System.out.println("- 음료");
         }

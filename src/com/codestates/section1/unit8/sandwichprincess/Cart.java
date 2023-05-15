@@ -69,7 +69,7 @@ public class Cart {
         newCartItems[newCartItems.length - 1] = productToAddToCart;
         cartItems = newCartItems;
 
-        System.out.printf("[✅] %s를/을 장바구니에 담았습니다\n", productToAddToCart.getName());
+        System.out.printf("[🛒] %s를/을 장바구니에 담았습니다\n", productToAddToCart.getName());
     }
 
     // 2023.5.14(일) 11h10
@@ -146,7 +146,7 @@ public class Cart {
         scanner.nextLine();
     }
 
-    private void printCartItemsDetail() {
+    public void printCartItemsDetail() {
         for (Product cartItem : cartItems) {
             if (cartItem instanceof SandwichSet) {
                 SandwichSet sandwichSet = (SandwichSet) cartItem; // 다운캐스팅
@@ -183,7 +183,8 @@ public class Cart {
         return hasStraw ? "있음" : "없음";
     }
 
-    private int calculateTotalPrice() {
+    // 2023.5.15(월) 23h50 Order 클래스/주문 기능 구현하며 접근제어자 수정
+    public int calculateTotalPrice() {
         int totalPrice = 0;
 
         for (Product cartItem : cartItems) {
