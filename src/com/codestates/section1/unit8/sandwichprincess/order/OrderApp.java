@@ -1,5 +1,6 @@
-package com.codestates.section1.unit8.sandwichprincess;
+package com.codestates.section1.unit8.sandwichprincess.order;
 
+import com.codestates.section1.unit8.sandwichprincess.product.Menu;
 import com.codestates.section1.unit8.sandwichprincess.product.Product;
 import com.codestates.section1.unit8.sandwichprincess.product.ProductRepository;
 
@@ -19,6 +20,9 @@ public class OrderApp {
         // 2023.5.15(월) 0h5
         Cart cart = new Cart(productRepository, menu);
 
+        // 2023.5.16(화) 0h5
+        Order order = new Order(cart);
+
         while (true) {
             // 메뉴 출력
             menu.printMenu();
@@ -28,6 +32,7 @@ public class OrderApp {
 
             if (input.equals("+")) {
                 // 주문 내역 출력
+                order.placeOrder();
                 break;
             } else if (input.equals("0")) {
                 // 장바구니 출력

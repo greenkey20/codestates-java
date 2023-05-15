@@ -1,6 +1,5 @@
-package com.codestates.section1.unit8.sandwichprincess;
+package com.codestates.section1.unit8.sandwichprincess.product;
 
-import com.codestates.section1.unit8.sandwichprincess.product.Product;
 import com.codestates.section1.unit8.sandwichprincess.product.subproduct.Drink;
 import com.codestates.section1.unit8.sandwichprincess.product.subproduct.Sandwich;
 import com.codestates.section1.unit8.sandwichprincess.product.subproduct.Side;

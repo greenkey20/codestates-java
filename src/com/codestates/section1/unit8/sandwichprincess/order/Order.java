@@ -1,4 +1,4 @@
-package com.codestates.section1.unit8.sandwichprincess;
+package com.codestates.section1.unit8.sandwichprincess.order;
 
 import static com.codestates.section1.unit8.sandwichprincess.common.Utils.printLine;
 
@@ -15,9 +15,10 @@ public class Order {
         System.out.println("[✅] 주문 내역은 다음과 같습니다");
         printLine();
         // 주문 내역 상세 출력
+        cart.printCartItemsDetail();
         printLine();
 
-        System.out.printf("[💲] 금액 합계 : %d원\n", );
+        System.out.printf("[💲] 금액 합계 : %d원\n", cart.calculateTotalPrice());
 
     }
 }
