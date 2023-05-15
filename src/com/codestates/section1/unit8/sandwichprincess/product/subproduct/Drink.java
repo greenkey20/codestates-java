@@ -11,6 +11,12 @@ public class Drink extends Product {
         this.hasStraw = hasStraw;
     }
 
+    // 2023.5.15(월) 1h20 '복사 생성자' 추가 -> 객체의 깊은 복사
+    public Drink(Drink drink) {
+        super(drink.getName(), drink.getPrice(), drink.getKcal());
+        this.hasStraw = drink.hasStraw();
+    }
+
     public boolean hasStraw() { // 자동생성한 getter의 이름(isHasStraw)을 의미에 부합하게 변경
         return hasStraw;
     }

@@ -16,22 +16,28 @@ public class OrderApp {
 
         System.out.println("== 🥪 Sandwich Princess order service ==");
 
-//        while (true) {
+        // 2023.5.15(월) 0h5
+        Cart cart = new Cart(productRepository, menu);
+
+        while (true) {
             // 메뉴 출력
-        menu.printMenu();
+            menu.printMenu();
 
             // 사용자 입력받기
-        String input = scanner.nextLine();
+            String input = scanner.nextLine();
 
-            // if (사용자 입력 == '+') {
+            if (input.equals("+")) {
                 // 주문 내역 출력
-//                 break;
-//            } else if (사용자 입력 == '0') {
+                break;
+            } else if (input.equals("0")) {
                 // 장바구니 출력
-//            } else { // 사용자 입력 == 1 ~ 메뉴 마지막 번호
-                // 사용자가 고른 상품의 옵션 보여주고 고르게 함
+                cart.printCart();
+            } else { // 사용자 입력 == 1 ~ 메뉴 마지막 번호
+                int productIdChosen = Integer.parseInt(input);
+                // 사용자가 고른 상품의 옵션 보여주고 고르게 함 = menu.chooseOption() = addToCart() 안에서 호출됨
                 // 장바구니에 담기
-//            }
-//        }
+                cart.addToCart(productIdChosen);
+            }
+        }
     }
 }

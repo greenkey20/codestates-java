@@ -13,12 +13,19 @@ public class Sandwich extends Product {
         this.sandwichSetPrice = sandwichSetPrice;
     }
 
+    // 2023.5.15(월) 1h15 '복사 생성자' 추가 -> 객체의 깊은 복사
+    public Sandwich(Sandwich sandwich) {
+        super(sandwich.getName(), sandwich.getPrice(), sandwich.getKcal());
+        this.isSandwichSet = sandwich.isSandwichSet();
+        this.sandwichSetPrice = sandwich.getSandwichSetPrice();
+    }
+
     public boolean isSandwichSet() {
         return isSandwichSet;
     }
 
-    public void setSandwichSet(boolean sandwichSet) {
-        isSandwichSet = sandwichSet;
+    public void setSandwichSet(boolean isSandwichSet) {
+        this.isSandwichSet = isSandwichSet;
     }
 
     public int getSandwichSetPrice() {

@@ -11,6 +11,12 @@ public class Side extends Product {
         this.ketchup = ketchup;
     }
 
+    // 2023.5.15(월) 1h15 '복사 생성자' 추가 -> 객체의 깊은 복사
+    public Side(Side side) {
+        super(side.getName(), side.getPrice(), side.getKcal());
+        this.ketchup = side.getKetchup();
+    }
+
     public int getKetchup() {
         return ketchup;
     }

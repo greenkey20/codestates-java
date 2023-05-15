@@ -9,10 +9,10 @@ import static com.codestates.section1.unit8.sandwichprincess.common.Utils.printL
 
 // 2023.5.11(목) 23h20
 public class Menu {
-    private Product[] products;
+    private Product[] PRODUCTS;
 
-    public Menu(Product[] products) {
-        this.products = products;
+    public Menu(Product[] PRODUCTS) {
+        this.PRODUCTS = PRODUCTS;
     }
 
     // 2023.5.12(금) 21h45
@@ -26,13 +26,13 @@ public class Menu {
         System.out.println();
 
         // 샌드위치 출력
-        printSandwiches(true); // refactoring > extract method
+        printSandwiches(false); // refactoring > extract method
 
         // 사이드 출력
-        printSides(true);
+        printSides(false);
 
         // 음료 출력
-        printDrinks(true);
+        printDrinks(false);
 
         printLine();
 
@@ -44,12 +44,12 @@ public class Menu {
     }
 
     // 2023.5.14(일) 11h50 composeSet() 메서드 작성하며 수정
-    private void printSandwiches(boolean printPrice) {
+    private void printSandwiches(boolean isSet) {
         System.out.println("- 샌드위치");
 
-        for (Product product : products) {
+        for (Product product : PRODUCTS) {
             if (product instanceof Sandwich) {
-                printEachMenu(product, printPrice);
+                printEachMenu(product, isSet);
             }
         }
 
@@ -57,12 +57,14 @@ public class Menu {
     }
 
     // 2023.5.14(일) 11h50 composeSet() 메서드 작성하며 수정
-    protected void printSides(boolean printPrice) {
-        System.out.println("- 사이드");
+    protected void printSides(boolean isSet) {
+        if (!isSet) {
+            System.out.println("- 사이드");
+        }
 
-        for (Product product : products) {
+        for (Product product : PRODUCTS) {
             if (product instanceof Side) {
-                printEachMenu(product, printPrice);
+                printEachMenu(product, isSet);
             }
         }
 
@@ -70,12 +72,14 @@ public class Menu {
     }
 
     // 2023.5.14(일) 11h50 composeSet() 메서드 작성하며 수정
-    protected void printDrinks(boolean printPrice) {
-        System.out.println("- 음료");
+    protected void printDrinks(boolean isSet) {
+        if (!isSet) {
+            System.out.println("- 음료");
+        }
 
-        for (Product product : products) {
+        for (Product product : PRODUCTS) {
             if (product instanceof Drink) {
-                printEachMenu(product, printPrice);
+                printEachMenu(product, isSet);
             }
         }
 
@@ -83,8 +87,8 @@ public class Menu {
     }
 
     // 2023.5.14(일) 11h45 composeSet() 메서드 작성하며 수정
-    private static void printEachMenu(Product product, boolean printPrice) {
-        if (printPrice) {
+    private static void printEachMenu(Product product, boolean isSet) {
+        if (!isSet) {
             System.out.printf("[%d] %s %5dKcal %5d원\n", product.getId(), product.getName(), product.getKcal(), product.getPrice());
         } else {
             System.out.printf("[%d] %s %5dKcal\n", product.getId(), product.getName(), product.getKcal());
