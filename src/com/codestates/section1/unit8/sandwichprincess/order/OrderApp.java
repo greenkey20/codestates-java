@@ -17,16 +17,17 @@ public class OrderApp {
     public void view() {
         Scanner scanner = new Scanner(System.in);
 
-        ProductRepository productRepository = new ProductRepository();
+        ProductRepository productRepository = new ProductRepository(); // 필요한 객체 생성1
         Product[] PRODUCTS = productRepository.getAllProducts();
-        Menu menu = new Menu(PRODUCTS);
+        Menu menu = new Menu(PRODUCTS); // 필요한 객체 생성2
 
         System.out.println("== 🥪 Sandwich Princess order service ==");
 
         // 2023.5.15(월) 0h5
-        Cart cart = new Cart(productRepository, menu);
+        Cart cart = new Cart(productRepository, menu); // 필요한 객체 생성3
 
         // 2023.5.16(화) 0h5
+        // 필요한 객체 생성4
         Order order = new Order(cart, new Discount(
                 new DiscountCondition[]{
                         new StudentDiscountCondition(new FixedRateDiscountPolicy(10.0)),
