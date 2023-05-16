@@ -11,10 +11,10 @@ public class Main {
         OrderApp orderApp = new OrderApp(
                 appConfigurer.productRepository(),
                 appConfigurer.menu(),
-                appConfigurer.cart(),
-                appConfigurer.order()
+                appConfigurer.cart(), // 2023.5.16(화) 11h55 현재 여기서 할당되는 Cart 인스턴스와
+                appConfigurer.order() // 여기서 할당되는 Cart 인스턴스가 다름 -> 주문 시 장바구니 내역이 보이지 않음
         );
-        
+
         orderApp.view();
     }
 }
