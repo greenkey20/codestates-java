@@ -1,5 +1,6 @@
 package com.codestates.section1.unit8.sandwichprincess.order;
 
+import com.codestates.section1.unit8.sandwichprincess.discount.Discount;
 import com.codestates.section1.unit8.sandwichprincess.discount.condition.DiscountCondition;
 import com.codestates.section1.unit8.sandwichprincess.discount.condition.StudentDiscountCondition;
 import com.codestates.section1.unit8.sandwichprincess.discount.condition.YouthDiscountCondition;
@@ -26,10 +27,11 @@ public class OrderApp {
         Cart cart = new Cart(productRepository, menu);
 
         // 2023.5.16(화) 0h5
-        Order order = new Order(cart, new DiscountCondition[]{
-                new StudentDiscountCondition(new FixedRateDiscountPolicy(10.0)),
-                new YouthDiscountCondition(new FixedAmountDiscountPolicy(500))
-        });
+        Order order = new Order(cart, new Discount(
+                new DiscountCondition[]{
+                        new StudentDiscountCondition(new FixedRateDiscountPolicy(10.0)),
+                        new YouthDiscountCondition(new FixedAmountDiscountPolicy(500))
+                }));
 
         while (true) {
             // 메뉴 출력
