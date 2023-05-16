@@ -1,35 +1,40 @@
 package com.codestates.section1.unit8.sandwichprincess.order;
 
-import com.codestates.section1.unit8.sandwichprincess.discount.condition.YouthDiscountCondition;
-import com.codestates.section1.unit8.sandwichprincess.discount.condition.StudentDiscountCondition;
-import com.codestates.section1.unit8.sandwichprincess.discount.policy.FixedAmountDiscountPolicy;
-import com.codestates.section1.unit8.sandwichprincess.discount.policy.FixedRateDiscountPolicy;
+import com.codestates.section1.unit8.sandwichprincess.discount.condition.DiscountCondition;
 
 import static com.codestates.section1.unit8.sandwichprincess.common.Utils.printLine;
 
 // 2023.5.15(월) 23h15
 public class Order {
     private Cart cart;
+    private DiscountCondition[] discountConditions;
 
-    public Order(Cart cart) {
+    public Order(Cart cart, DiscountCondition[] discountConditions) {
         this.cart = cart;
+        this.discountConditions = discountConditions;
     }
 
     public void placeOrder() {
-        StudentDiscountCondition studentDiscountCondition = new StudentDiscountCondition(new FixedRateDiscountPolicy(10.0)); // 직접 객체 생성해서 사용 = 직접적으로 의존
-        YouthDiscountCondition youthDiscountCondition = new YouthDiscountCondition(new FixedAmountDiscountPolicy(500)); // 직접 객체 생성해서 사용 = 직접적으로 의존
-        studentDiscountCondition.checkDiscountCondition();
-        youthDiscountCondition.checkDiscountCondition();
+//        StudentDiscountCondition studentDiscountCondition = new StudentDiscountCondition(new FixedRateDiscountPolicy(10.0)); // 직접 객체 생성해서 사용 = 직접적으로 의존
+//        YouthDiscountCondition youthDiscountCondition = new YouthDiscountCondition(new FixedAmountDiscountPolicy(500)); // 직접 객체 생성해서 사용 = 직접적으로 의존
+//        studentDiscountCondition.checkDiscountCondition();
+//        youthDiscountCondition.checkDiscountCondition();
 
         int totalPrice = cart.calculateTotalPrice();
         int finalPrice = totalPrice;
 
-        if (studentDiscountCondition.isSatisfied()) {
-            finalPrice = studentDiscountCondition.applyDiscount(finalPrice);
-        }
+//        if (studentDiscountCondition.isSatisfied()) {
+//            finalPrice = studentDiscountCondition.applyDiscount(finalPrice);
+//        }
 
-        if (youthDiscountCondition.isSatisfied()) {
-            finalPrice = youthDiscountCondition.applyDiscount(finalPrice);
+//        if (youthDiscountCondition.isSatisfied()) {
+//            finalPrice = youthDiscountCondition.applyDiscount(finalPrice);
+//        }
+
+        // 2023.5.16(화) 1h50 추상화(인터페이스 생성) + 다형성 + 의존성 주입
+        for (DiscountCondition discountCondition : discountConditions) {
+            discountCondition.checkDiscountCondition();
+            if (discountCondition.isSatisfied()) finalPrice = discountCondition.applyDiscount(finalPrice);
         }
 
         System.out.println("[✅] 주문이 완료되었습니다");
