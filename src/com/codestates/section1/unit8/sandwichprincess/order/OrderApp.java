@@ -1,27 +1,32 @@
 package com.codestates.section1.unit8.sandwichprincess.order;
 
-import com.codestates.section1.unit8.sandwichprincess.discount.Discount;
-import com.codestates.section1.unit8.sandwichprincess.discount.condition.DiscountCondition;
-import com.codestates.section1.unit8.sandwichprincess.discount.condition.StudentDiscountCondition;
-import com.codestates.section1.unit8.sandwichprincess.discount.condition.YouthDiscountCondition;
-import com.codestates.section1.unit8.sandwichprincess.discount.policy.FixedAmountDiscountPolicy;
-import com.codestates.section1.unit8.sandwichprincess.discount.policy.FixedRateDiscountPolicy;
 import com.codestates.section1.unit8.sandwichprincess.product.Menu;
-import com.codestates.section1.unit8.sandwichprincess.product.Product;
 import com.codestates.section1.unit8.sandwichprincess.product.ProductRepository;
 
 import java.util.Scanner;
 
 // 2023.5.11(목) 23h10
 public class OrderApp {
+    private ProductRepository productRepository;
+    private Menu menu;
+    private Cart cart;
+    private Order order;
+
+    // AppConfigurer가 생성한 객체를 주입받아서 사용
+    public OrderApp(ProductRepository productRepository, Menu menu, Cart cart, Order order) {
+        this.productRepository = productRepository;
+        this.menu = menu;
+        this.cart = cart;
+        this.order = order;
+    }
+
     public void view() {
         Scanner scanner = new Scanner(System.in);
 
+        /*
         ProductRepository productRepository = new ProductRepository(); // 필요한 객체 생성1
         Product[] PRODUCTS = productRepository.getAllProducts();
         Menu menu = new Menu(PRODUCTS); // 필요한 객체 생성2
-
-        System.out.println("== 🥪 Sandwich Princess order service ==");
 
         // 2023.5.15(월) 0h5
         Cart cart = new Cart(productRepository, menu); // 필요한 객체 생성3
@@ -33,6 +38,9 @@ public class OrderApp {
                         new StudentDiscountCondition(new FixedRateDiscountPolicy(10.0)),
                         new YouthDiscountCondition(new FixedAmountDiscountPolicy(500))
                 }));
+        */
+
+        System.out.println("== 🥪 SandwichPrincess order service ==");
 
         while (true) {
             // 메뉴 출력
