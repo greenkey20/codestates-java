@@ -1,7 +1,7 @@
 package com.codestates.section1.unit8.abstraction;
 
 // 2022.9.14(수) 7h55
-public interface InterfaceExample {
+public interface InterfaceExample1 {
     public static final int ROCK = 1;
     final int SCISSORS = 2;
     static int PAPER = 3;
