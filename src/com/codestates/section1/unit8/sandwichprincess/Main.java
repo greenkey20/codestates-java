@@ -4,7 +4,7 @@ package com.codestates.section1.unit8.sandwichprincess;
 import com.codestates.section1.unit8.sandwichprincess.common.AppConfigurer;
 import com.codestates.section1.unit8.sandwichprincess.order.OrderApp;
 
-// 2023.5.11(목) 22h20 oop 심화 실습
+// 2023.5.11(목) 22h20 oop 심화 실습 -> 2023.5.21(일) 23h40 Spring framework 사용해서 전환
 public class Main {
     public static void main(String[] args) {
         AppConfigurer appConfigurer = new AppConfigurer();
