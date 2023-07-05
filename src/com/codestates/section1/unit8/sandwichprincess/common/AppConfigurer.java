@@ -18,7 +18,7 @@ import com.codestates.section1.unit8.sandwichprincess.product.ProductRepository;
  *
  * 코드 흐름의 주도권이 개발자(x) framework(o)로 넘어감 = 제어의 역전(inversion of control)
  */
-@Configuration
+//@Configuration
 public class AppConfigurer {
     // 2023.5.16(화) 12h Singleton 패턴
     private Cart cart = new Cart(productRepository(), menu()); // Cart 인스턴스가 단 1번만 생성될 수 있도록 필드 정의 + 바로 초기화 -> cart() 메서드는 이렇게 생성된 cart 인스턴스를 반환
