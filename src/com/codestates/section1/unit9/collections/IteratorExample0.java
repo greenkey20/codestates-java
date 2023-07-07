@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 // 2022.9.13(화) 학습 자료 제공
-public class IteratorExample {
+public class IteratorExample0 {
     public static void main(String[] args) {
         ArrayList<Integer> arrayList = new ArrayList<>();
 

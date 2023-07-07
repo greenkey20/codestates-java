@@ -3,7 +3,7 @@ package com.codestates.section1.unit9.collections;
 import java.util.*;
 
 // 2022.9.13(화) 학습 자료 제공
-public class HashMapExample {
+public class HashMapExample0 {
     public static void main(String[] args) {
         HashMap<String, Integer> hashMap = new HashMap<>();
 
