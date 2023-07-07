@@ -8,7 +8,15 @@ public class TreeSetExample0 {
         TreeSet<Integer> treeSet = new TreeSet<>();
 
         for (int i = 1; treeSet.size() < 6; i++) {
-            int num = (int) (Math.random() * 45) + 1;
+            int num = 0;
+
+            while (true) {
+                num = (int) (Math.random() * 45) + 1;
+
+                if (!treeSet.contains(num)) {
+                    break;
+                }
+            }
 
             System.out.println(i + "번째 num = " + num);
 
