@@ -1,4 +1,4 @@
-package com.codestates.section1.unit9.genericExercise;
+package com.codestates.section1.unit9.generic;
 
 // 2022.11.29(화) 18h
 public class GenericConcept {

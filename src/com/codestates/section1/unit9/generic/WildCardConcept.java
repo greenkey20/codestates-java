@@ -1,4 +1,4 @@
-package com.codestates.section1.unit9.genericExercise;
+package com.codestates.section1.unit9.generic;
 
 import static com.codestates.section1.unit8.sandwichprincess.common.Utils.printBoldLine;
 import static com.codestates.section1.unit8.sandwichprincess.common.Utils.printLine;
