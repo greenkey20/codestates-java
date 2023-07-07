@@ -11,11 +11,11 @@ public class MethodReferences {
         // 정적 메서드 참조
 //        operator = Calculator.staticMethod(3, 5);
         operator = Calculator::staticMethod;
-        System.out.println("static/정적 메서드 결과 = " + operator.applyAsInt(3, 5));
+        System.out.println("static/정적 메서드 결과 = " + operator.applyAsInt(3, 5)); // 8
 
         // 인스턴스 메서드 참조
         Calculator calculator = new Calculator();
         operator = calculator::instanceMethod;
-        System.out.println("instance 메서드 결과 = " + operator.applyAsInt(3, 5));
+        System.out.println("instance 메서드 결과 = " + operator.applyAsInt(3, 5)); // 15
     }
 }
