@@ -2,14 +2,16 @@ package com.codestates.section1.unit10.stream;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Stream1 {
-    public static int computeSumOfAllElements(List<Integer> list){
-        //TODO..
+    public static int computeSumOfAllElements1(List<Integer> list) {
         Stream<Integer> listStream = list.stream();
         return listStream.mapToInt(el -> el).sum();
+    }
+
+    public int computeSumOfAllElements2(List<Integer> list) {
+        return list.stream().mapToInt(el -> el).sum();
     }
 
     public static void main(String[] args) {
@@ -19,11 +21,11 @@ public class Stream1 {
             list.add(i);
         }
 
-        int result = computeSumOfAllElements(list);
+        int result = computeSumOfAllElements1(list);
         System.out.println(result);
 
         List<Integer> list2 = new ArrayList<>();
-        System.out.println(computeSumOfAllElements(list2));
+        System.out.println(computeSumOfAllElements1(list2));
 
 
     }
