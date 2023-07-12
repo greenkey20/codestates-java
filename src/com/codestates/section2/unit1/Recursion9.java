@@ -67,7 +67,7 @@ public class Recursion9 {
 
     public int[] takeReference2(int num, int[] arr) {
         //base Case : 더 이상 쪼개어 생각할 수 없는 경우
-        //선택할 요소의 갯수(num)가 배열의 전체 요소의 갯수보다 많은 경우, 입력된 배열을 반환합니다.
+        //선택할 요소의 갯수(num)가 배열의 전체 요소의 갯수보다 많은 경우, 입력된 배열을 반환합니다 = edge case
         if (num >= arr.length) {
             return arr;
         }
