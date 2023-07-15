@@ -13,10 +13,13 @@ public class Recursion12 {
         int[] afterRecursion = reverseArrV2(Arrays.copyOfRange(arr, 0, arr.length - 1));
 
         int[] dest = new int[tail.length + afterRecursion.length];
+        System.arraycopy(tail, 0, dest, 0, tail.length);
+        System.arraycopy(afterRecursion, 0, dest, tail.length, afterRecursion.length);
 
-        return tail;
+        return dest;
     }
 
+    // 코플릿 제출본
     public int[] reverseArrV1(int[] arr) {
         if (arr.length == 0) {
             return arr;
@@ -37,6 +40,7 @@ public class Recursion12 {
         return result;
     }
 
+    // [1,2,3,4]
     public int[] reverseArrReference(int[] arr) {
         //재귀 함수를 사용하여, 새로운 배열로 기존 입력된 arr 배열의 마지막 인덱스의 값부터 넣어줍니다.
 
@@ -47,10 +51,10 @@ public class Recursion12 {
 
         //recursive Case : 그렇지 않은 경우
         //배열의 가장 마지막 요소만을 가지고 있는 head 배열을 선언, 할당합니다.
-        int[] head = Arrays.copyOfRange(arr, arr.length - 1, arr.length);
+        int[] head = Arrays.copyOfRange(arr, arr.length - 1, arr.length); // [4]
 
         //남은 요소를 가지고 있는 tail 배열을 선언, 할당하고, 해당 배열의 요소가 모두 제거될 때까지 재귀함수를 호출합니다.
-        int[] tail = reverseArrReference(Arrays.copyOfRange(arr, 0, arr.length - 1));
+        int[] tail = reverseArrReference(Arrays.copyOfRange(arr, 0, arr.length - 1)); // rec([1,2,3]) = [3,2,1]
 
         //재귀함수가 모두 호출된 이후에, 할당된 head배열과 tail 배열을 합친 새로운 배열을 선언, 할당합니다.
         //새로운 배열을 선언합니다. 배열의 크기는 head.length와 tail.length를 합친 크기로 선언합니다.
@@ -60,6 +64,6 @@ public class Recursion12 {
         System.arraycopy(head, 0, dest, 0, head.length);
         System.arraycopy(tail, 0, dest, head.length, tail.length);
 
-        return dest;
+        return dest; // [4,3,2,1]
     }
 }
