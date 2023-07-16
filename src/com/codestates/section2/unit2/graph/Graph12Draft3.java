@@ -44,26 +44,30 @@ public class Graph12Draft3 {
         int result = 0;
 
         for (int i = 0; i < visited.length; i++) {
-            if (visited[i]) {
+            if (!visited[i]) {
                 result++;
+                visited = bfs_array(adjArray, i, visited);
             }
-            visited = bfs_array(adjArray, i, visited);
         }
 
         return result;
     }
 
+    // 2023.7.15(토) 23h30 draft + 2023.7.16(일) 12h15 보충
     public boolean[] bfs_array(int[][] adjArray, int i, boolean[] visited) {
         Queue<Integer> queue = new LinkedList<>();
-        int[] graph = adjArray[i];
+//        int[] graph = adjArray[i];
         visited[i] = true;
+        queue.add(i);
 
         while (!queue.isEmpty()) {
-            for (int j = 0; j < adjArray.length; j++) {
-                int num = graph[j];
+            for (int j = 0; j < adjArray[i].length; j++) {
+                int num = adjArray[i][j];
+                queue.poll();
 
-                if (num == 1) {
+                if (num == 1 && !visited[num]) {
                     queue.add(num);
+                    visited[num] = true;
                 }
             }
         }
