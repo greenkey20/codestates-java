@@ -21,7 +21,7 @@ public class Graph12Draft3 {
                 }
             }
         }
-        System.out.println("max = " + max); // todo
+//        System.out.println("max = " + max); // todo
 
         // 최대 버택스 + 1 = 인접행렬의 크기
         // (최대 vertex + 1) 크기로 인접행렬 만들기
@@ -46,14 +46,15 @@ public class Graph12Draft3 {
         for (int i = 0; i < visited.length; i++) {
             if (!visited[i]) {
                 result++;
-                visited = bfs_array(adjArray, i, visited);
+//                visited = bfs_array(adjArray, i, visited);
+                visited = dfs_array(adjArray, i, visited);
             }
         }
 
         return result;
     }
 
-    // 2023.7.15(토) 23h30 draft + 2023.7.16(일) 12h15 보충
+    // 2023.7.15(토) 23h30 draft + 2023.7.16(일) 12h15 (reference 참고하며)보충
     public boolean[] bfs_array(int[][] adjArray, int i, boolean[] visited) {
         Queue<Integer> queue = new LinkedList<>();
 //        int[] graph = adjArray[i];
@@ -61,14 +62,32 @@ public class Graph12Draft3 {
         queue.add(i);
 
         while (!queue.isEmpty()) {
-            for (int j = 0; j < adjArray[i].length; j++) {
-                int num = adjArray[i][j];
-                queue.poll();
+            // 현재 위치를 queue에서 꺼내옴
+            int current = queue.poll();
 
-                if (num == 1 && !visited[num]) {
-                    queue.add(num);
-                    visited[num] = true;
+            for (int j = 0; j < adjArray[current].length; j++) {
+                if (adjArray[current][j] == 1 && !visited[j]) {
+                    queue.add(j);
+                    visited[j] = true;
                 }
+            }
+        }
+
+        return visited;
+    }
+
+    // 2023.7.16(일) 12h40 reference 참고한 뒤 작성해봄
+    public boolean[] dfs_array(int[][] adjArray, int i, boolean[] visited) {
+        visited[i] = true;
+
+        // 나의 질문 = 이 재귀함수에서는 왜 탈출/base 조건(문제를 더 이상 쪼갤 수 없는 경우)이 필요하지 않지..?
+//        if (i == adjArray[0].length) {
+//            return visited;
+//        }
+
+        for (int j = 0; j < adjArray[i].length; j++) {
+            if (adjArray[i][j] == 1 && !visited[j]) {
+                dfs_array(adjArray, j, visited);
             }
         }
 
