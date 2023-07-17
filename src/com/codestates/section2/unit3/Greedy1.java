@@ -3,8 +3,42 @@ package com.codestates.section2.unit3;
 import java.util.Arrays;
 
 public class Greedy1 {
+    // 2023.7.17(월) 8h40
+    public int movingStuffV2(int[] stuff, int limit) {
+        int boxCount = 0;
+        int innerCount = 0;
+
+        Arrays.sort(stuff);
+        int[] stuffDesc = new int[stuff.length];
+
+        for (int i = stuff.length - 1; i >= 0; i--) {
+            stuffDesc[stuff.length - 1 - i] = stuff[i];
+        }
+        System.out.println("stuffDesc = " + Arrays.toString(stuffDesc)); // todo
+
+        int freeSpace = 0;
+        for (int i = 0; i < stuffDesc.length; i++) {
+            int thisStuff = stuffDesc[i];
+
+            if (freeSpace >= thisStuff) {
+                if (innerCount == 1) { // 기존에 시작한 상자에 2번째 stuff를 추가로 넣을 수 있음
+                    innerCount = 0;
+                    continue;
+                }
+            }
+
+            // 그 외의 경우에는 새로 상자를 시작해야 함
+            boxCount++;
+            innerCount = 1;
+
+            freeSpace = limit - thisStuff;
+        }
+
+        return boxCount;
+    }
+
     // 2022.9.28(수) 16h15
-    public static int movingStuff(int[] stuff, int limit) {
+    public static int movingStuffV1(int[] stuff, int limit) {
         /* 옮겨야 할 짐의 개수(stuff 배열의 원소의 개수)는 1개 이상 50,000개 이하
         limit(상자 1개의 무게 제한)는 40 이상 240 이하의 자연수
         박스의 무게 제한은 항상 짐의 무게 중 최대값보다 크게 주어지므로 짐을 나르지 못하는 경우는 없음
@@ -61,10 +95,14 @@ public class Greedy1 {
     }
 
     public static void main(String[] args) {
-        int output1 = movingStuff(new int[]{70, 50, 80, 50}, 100);
+        Greedy1 greedy1 = new Greedy1();
+        int output1 = greedy1.movingStuffV2(new int[]{70, 50, 80, 50}, 100);
         System.out.println(output1); // 3
 
-        int output2 = movingStuff(new int[]{60, 80, 120, 90, 130}, 140);
+        int output2 = greedy1.movingStuffV2(new int[]{60, 80, 120, 90, 130}, 140);
         System.out.println(output2); // 4
+
+        int output3 = greedy1.movingStuffV2(new int[]{167, 103, 73, 60, 42, 25}, 187);
+        System.out.println(output3); // 4
     }
 }
