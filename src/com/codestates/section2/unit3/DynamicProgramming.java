@@ -3,9 +3,9 @@ package com.codestates.section2.unit3;
 // 2022.11.19(토) 23h55
 public class DynamicProgramming {
 
-    // 2023.7.18(화) 23h20 reference 강의 보며 작성해봄 -> 23h40 제출 시 int 값 범위 넘어가는 테스트케이스들 통과 못함
+    // 2023.7.18(화) 23h20 reference 강의 보며 작성해봄 -> 23h40 제출 시 int 값 범위 넘어가는 테스트케이스들 통과 못함 -> 반환 변수 자료형 변경하면 '맞았습니다'
     public long ocean(int target, int[] type) {
-        int[] bag = new int[target + 1];
+        long[] bag = new long[target + 1];
         bag[0] = 1; // 금액 0을 만드는 방법 = 아무 지폐도 선택하지 않는 것 = 1가지 경우로 봄
 
         for (int i = 0; i < type.length; i++) {
@@ -35,7 +35,7 @@ public class DynamicProgramming {
 
     public long oceanReferenceWithComment(int target, int[] type) {
         // bag 이라는 배열에 금액을 만들 수 있는 경우의 수를 기록
-        // 각 인덱스 no# = 만드려는 금액 을 의미
+        // 각 인덱스 no# = 만드려는 금액을 의미
         // ex) target = 5, type = [1, 2, 5] 면
         // bag[3] = 2 => 3원을 만드는 경우의 수 = 1만 사용 & 1,2 함께 사용 (1*3, 1 + 2)
         // bag[4] = 3 => 4원을 만드는 경우의 수 = 1만 사용 & 1,2 함께 사용 (1*4, 1*2 + 2, 2*2)
@@ -45,7 +45,7 @@ public class DynamicProgramming {
 //        bag.add(1);
         long[] bag = new long[target + 1]; //인덱스가 1부터 시작
 
-        // 인덱스 no# = 만드려는 금액 이기 때문에
+        // 인덱스 no# = 만드려는 금액이기 때문에
         // bag 을 target 금액만큼의 길이를 가진 배열을 만들어 주고,
         // 경우의 수를 저장하기 위해 초기값은 모두 0으로 만들어 준다
         bag[0] = 1;
