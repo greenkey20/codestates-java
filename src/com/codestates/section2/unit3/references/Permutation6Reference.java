@@ -1,4 +1,4 @@
-package com.codestates.section2.unit3;
+package com.codestates.section2.unit3.references;
 
 import java.util.ArrayList;
 import java.util.Arrays;

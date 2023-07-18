@@ -1,7 +1,7 @@
 package com.codestates.section2.unit3;
 
 // 2022.11.19(토) 23h55
-public class DynamicProgramming {
+public class DynamicProgramming4 {
 
     // 2023.7.18(화) 23h20 reference 강의 보며 작성해봄 -> 23h40 제출 시 int 값 범위 넘어가는 테스트케이스들 통과 못함 -> 반환 변수 자료형 변경하면 '맞았습니다'
     public long ocean(int target, int[] type) {
