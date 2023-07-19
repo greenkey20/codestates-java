@@ -1,9 +1,10 @@
 package com.codestates.section2.unit3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
-// 2023.7.18(화) 23h50 + 2023.7.19(수) 20h50 references 봐도 이해가 잘 안 가는 바, 작성은 더더욱 안 됨..
+// 2023.7.18(화) 23h50 + 2023.7.19(수) 20h50 references 봐도 이해가 잘 안 가는 바, 작성은 더더욱 안 됨 -> 21h40 reference 보고 테스트는 통과하나, 동작 원리 이해 못함
 public class Permutation6 {
     public ArrayList<Integer[]> newChickenRecipe(int[] stuffArr, int choiceNum) {
         ArrayList<Integer> stuffList = new ArrayList<>();
@@ -33,17 +34,23 @@ public class Permutation6 {
         boolean[] visited = new boolean[stuffList.size()];
         Integer[] output = new Integer[choiceNum];
 
-        permutation(0, choiceNum, output, stuffList, visited, results);
+        permutation(0, output, stuffList, visited, results);
 
         return results;
     }
 
-    public void permutation(int depth, int choiceNum, Integer[] output, ArrayList<Integer> stuffList, boolean[] visited, ArrayList<Integer[]> results) {
+    public void permutation(int depth, Integer[] output, ArrayList<Integer> stuffList, boolean[] visited, ArrayList<Integer[]> results) {
 //        Integer[] output = new Integer[choiceNum];
+        Integer[] copyOutput = Arrays.copyOf(output, output.length);
 
         // 문제를 더 이상 쪼갤 수 없을 때
-        if (depth + 1 == choiceNum) {
-            results.add(output);
+        if (depth == output.length) {
+            results.add(copyOutput);
+
+//            System.out.println("results = " + results);
+            for (int i = 0; i < results.size(); i++) {
+                System.out.println("copyOutput = " + Arrays.toString(copyOutput));
+            }
             return;
         }
 
@@ -52,7 +59,7 @@ public class Permutation6 {
             if (!visited[i]) {
                 output[depth] = stuffList.get(i);
                 visited[i] = true;
-                permutation(depth + 1, choiceNum, output, stuffList, visited, results);
+                permutation(depth + 1, output, stuffList, visited, results);
                 visited[i] = false;
             }
         }
