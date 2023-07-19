@@ -3,22 +3,66 @@ package com.codestates.section1.unit6.condition.stuffedanimal;
 // 2023.7.18(화) 저녁 help/advice by Eddie
 public class LessIfStatements {
 
-    //// Here's an approach with "handlers" for each animal type.
+    // Here's an approach with "handlers" for each animal type.
+    class IStuffedAnimal {
+        void stuffBody();
 
-    class IStuffedAnimal {...}
+        void attachArms(Arms arms);
 
-    interface IStuffedAnimalMaker {
-        MoreIfStatements.IStuffedAnimal MakeBody();
-        IArms MakeArms();
-        ILegs MakeLegs();
-        IEars MakeEars();
+        void stuffArms();
+
+        void attachLegs(Legs legs);
+
+        void stuffLegs();
+
+        void attachEars(Ears ears);
+
+        void stuffEars();
     }
 
-    class BearMaker extends IStuffedAnimalMaker {
-        MoreIfStatements.IStuffedAnimal MakeBody() { ... return ... }
-        IArms MakeArms() { ... return ... }
-        ILegs MakeLegs() { ... return ... }
-        IEars MakeEars() { ... return ... }
+    interface IStuffedAnimalMaker {
+        IStuffedAnimal makeBody();
+
+        IStuffedAnimal makeAndStuffBody();
+
+        IArms makeArms();
+
+        ILegs makeLegs();
+
+        IEars makeEars();
+
+        void makeAndAttachArmsToAnimal(IStuffedAnimal stuffedAnimal);
+
+        void makeAndAttachLegsToAnimal(IStuffedAnimal stuffedAnimal);
+
+        void makeAndAttachEarsToAnimal(IStuffedAnimal stuffedAnimal);
+    }
+
+    class BearMaker implements IStuffedAnimalMaker {
+        IStuffedAnimal makeBody() { ...return ...}
+
+        IStuffedAnimal makeAndStuffBody() { ...return ...}
+
+        IArms makeArms() { ...return ...}
+
+        ILegs makeLegs() { ...return ...}
+
+        IEars makeEars() { ...return ...}
+
+        @Override
+        public void makeAndAttachArmsToAnimal(IStuffedAnimal stuffedAnimal) {
+
+        }
+
+        @Override
+        public void makeAndAttachLegsToAnimal(IStuffedAnimal stuffedAnimal) {
+
+        }
+
+        @Override
+        public void makeAndAttachEarsToAnimal(IStuffedAnimal stuffedAnimal) {
+
+        }
     }
 
     enum AnimalType {
@@ -27,65 +71,64 @@ public class LessIfStatements {
         BIRD
     }
 
-    AnimalType DetermineType(Input input) {
+    AnimalType determineType(Input input) {
         if (input.ears == "round") {
             return BEAR;
         } else if (input.ears == "long") {
             return RABBIT;
-        } else if (input.ears == "none") {
+        } else /*if (input.ears == "none")*/ {
             return BIRD;
         }
     }
 
-    IStuffedAnimalMaker GetMaker(AnimalType type, Input input) {
+    IStuffedAnimalMaker getMaker(AnimalType type, Input input) {
         if (type == BEAR) {
             return new BearMaker(input);
         } else if (type == BEAR) {
             return new RabbitMaker(input);
-        } else if (type == BIRD) {
+        } else /*if (type == BIRD)*/ {
             return new BirdMaker(input);
         }
     }
 
-    MoreIfStatements.IStuffedAnimal MakeStuffedAnimal(Input input) {
-        AnimalType type = DetermineType(input);
-        IStuffedAnimalMaker maker = GetMaker(type, input);
+    IStuffedAnimal makeStuffedAnimalWithIf(Input input) {
+        AnimalType type = determineType(input);
+        IStuffedAnimalMaker maker = getMaker(type, input);
 
         // Body
-        MoreIfStatements.IStuffedAnimal result = maker.MakeBody();
+        IStuffedAnimal result = maker.makeBody();
         result.StuffBody();
 
         // Limbs
-        IArms arms = maker.MakeArms();
-        result.AttachArms(arms);
-        result.StuffArms();
+        IArms arms = maker.makeArms();
+        result.attachArms(arms);
+        result.stuffArms();
 
-        ILegs legs = maker.MakeLegs();
-        result.AttachLegs(legs);
-        result.StuffLegs();
+        ILegs legs = maker.makeLegs();
+        result.attachLegs(legs);
+        result.stuffLegs();
 
         // Ears
-        IEars ears = maker.MakeEars();
+        IEars ears = maker.makeEars();
         if (ears != null) {
-            result.AttachEars(ears);
-            result.StuffEars();
+            result.attachEars(ears);
+            result.stuffEars();
         }
 
         return result;
     }
 
-// In the above example there's still an if-statement in MakeStuffedAnimal. You
+    // In the above example there's still an if-statement in makeStuffedAnimal. You
 // can change how the maker works to avoid that. Here I'm passing in a stuffed
 // animal to the methods and let them do all the work:
+    IStuffedAnimal makeStuffedAnimalWithoutIf(Input input) {
+        AnimalType type = determineType(input);
+        IStuffedAnimalMaker maker = getMaker(type, input);
 
-    MoreIfStatements.IStuffedAnimal MakeStuffedAnimal(Input input) {
-        AnimalType type = DetermineType(input);
-        IStuffedAnimalMaker maker = GetMaker(type, input);
-
-        MoreIfStatements.IStuffedAnimal result = maker.MakeAndStuffBody();
-        maker.MakeAndAttachArmsToAnimal(result);
-        maker.MakeAndAttachLegsToAnimal(result);
-        maker.MakeAndAttachEarsToAnimal(result);
+        IStuffedAnimal result = maker.makeAndStuffBody();
+        maker.makeAndAttachArmsToAnimal(result);
+        maker.makeAndAttachLegsToAnimal(result);
+        maker.makeAndAttachEarsToAnimal(result);
 
         return result;
     }
