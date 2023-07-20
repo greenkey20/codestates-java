@@ -1,5 +1,6 @@
-package com.codestates.section1.unit10.thread;
+package com.codestates.section1.unit10.thread.references;
 
+// reference codes
 public class InterruptExample {
     public static void main(String[] args) {
         Thread thread = new InterruptExampleTask();

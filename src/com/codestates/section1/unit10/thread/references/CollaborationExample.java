@@ -1,5 +1,6 @@
-package com.codestates.section1.unit10.thread;
+package com.codestates.section1.unit10.thread.references;
 
+// reference codes
 public class CollaborationExample {
     public static void main(String[] args) {
         SharedObject sharedObject = new SharedObject();

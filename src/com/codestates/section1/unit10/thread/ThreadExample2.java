@@ -4,7 +4,7 @@ package com.codestates.section1.unit10.thread;
 public class ThreadExample2 {
     public static void main(String[] args) {
         // Thread 클래스를 직접 인스턴스화하지 않음
-        ThreadTask2 thread2 = new ThreadTask2();
+        ThreadTask12 thread2 = new ThreadTask12();
 
     }
 }

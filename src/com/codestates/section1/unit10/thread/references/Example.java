@@ -1,5 +1,6 @@
-package com.codestates.section1.unit10.thread;
+package com.codestates.section1.unit10.thread.references;
 
+// reference codes
 public class Example {
 
     // 작업 스레드를 활용한다.
