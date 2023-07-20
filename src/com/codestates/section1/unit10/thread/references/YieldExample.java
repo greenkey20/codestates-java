@@ -1,6 +1,6 @@
 package com.codestates.section1.unit10.thread.references;
 
-// reference codes
+// reference codes -> 2023.7.20(목) 21h10 읽고 실행시켜봤는데, 흐름 이해 안 됨
 public class YieldExample {
     public static void main(String[] args) {
 
@@ -26,10 +26,7 @@ public class YieldExample {
         // 스레드 A 작업 재개 -> 스레드 A, B 실행
         System.out.println("@@@@@ THREAD A WORK : TRUE @@@@@");
         yieldExampleTask1.setWork(true);
-        
     }
-
-
 }
 
 class YieldExampleTask implements Runnable {

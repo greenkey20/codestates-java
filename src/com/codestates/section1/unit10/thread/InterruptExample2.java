@@ -12,11 +12,8 @@ public class InterruptExample2 {
                     while (true) {
                         Thread.sleep(1000);
                     }
-                } catch (Exception e) {
-                    System.out.println("run() 메서드 안 catch문 = Woke up!");
-//                    e.printStackTrace();
-//                        throw new RuntimeException(e);
-                }
+                } catch (Exception e) { } // 2023.7.20(목) 20h55 나의 발견 = 나는 reference code와 다르게 썼었네..
+                System.out.println("run() 메서드 안 = Woke up!");
             } // run() 종료
         };
 
