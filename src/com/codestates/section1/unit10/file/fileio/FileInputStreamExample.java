@@ -1,4 +1,4 @@
-package com.codestates.section1.unit10.fileio;
+package com.codestates.section1.unit10.file.fileio;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;

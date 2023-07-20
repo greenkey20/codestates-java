@@ -1,5 +1,6 @@
-package com.codestates.section1.unit10.fileio;
+package com.codestates.section1.unit10.file.fileio;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -9,10 +10,13 @@ public class FileWriterExample {
         String fileName = "codestates_write.txt";
         try {
             FileWriter writer = new FileWriter(fileName);
+            BufferedWriter bw = new BufferedWriter(writer);
 
-            String str = "written!\n한글도 쓰기! ^^";
+            String str = "written v2!\n한글도 쓰기! ^^";
             writer.write(str);
-            writer.close();
+
+//            writer.close();
+            bw.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
