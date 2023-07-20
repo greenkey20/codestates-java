@@ -1,6 +1,7 @@
 package com.codestates.section1.unit10.thread.references;
 
 // reference codes
+// 2023.7.20(목) 19h45 학습
 public class SynchronizationExample {
     public static void main(String[] args) {
         // 2023.7.20(목) 19h50 학습
@@ -9,8 +10,8 @@ public class SynchronizationExample {
         Thread thread1 = new Thread(threadTask);
         Thread thread2 = new Thread(threadTask);
 
-        thread1.setName("조영현");
-        thread2.setName("나태웅");
+        thread1.setName("Tromm");
+        thread2.setName("Panda");
 
         thread1.start();
         thread2.start();
@@ -30,15 +31,33 @@ class Account {
 
     // 특정 코드 구간을 임계 영역으로 설정 시 = synchronized
     // 방법1) 메서드 전체를 임계 영역으로 지정
+    /*
     public synchronized boolean withdraw(int money) {
         if (balance >= money) {
-
             try { Thread.sleep(1000); } catch (InterruptedException e) {}
             balance -= money;
 
             return true;
         }
         else return false;
+    }
+     */
+    // 방법2) 특정 영역을 임계 영역으로 지정
+    public boolean withdraw(int money) {
+        synchronized (this) {
+            if (balance >= money) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+                balance -= money;
+                return true;
+            }
+
+            return false;
+        }
     }
 }
 
