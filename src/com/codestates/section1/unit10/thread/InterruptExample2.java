@@ -8,30 +8,30 @@ public class InterruptExample2 {
             @Override
             public void run() {
 //                super.run();
-                while (true) {
-                    try {
+                try {
+                    while (true) {
                         Thread.sleep(1000);
-                    } catch (Exception e) {
-                        System.out.println("Woke up!");
-                        e.printStackTrace();
-//                        throw new RuntimeException(e);
                     }
-                } // while문 끝
+                } catch (Exception e) {
+                    System.out.println("run() 메서드 안 catch문 = Woke up!");
+//                    e.printStackTrace();
+//                        throw new RuntimeException(e);
+                }
             } // run() 종료
         };
 
-        System.out.println("thread1.getState() = " + thread1.getState());
+        System.out.println("1. thread1.getState() = " + thread1.getState());
 
         // 스레드는 실행 대기(runnable) 상태로 만들어짐
         thread1.start();
 
-        System.out.println("thread1.getState() = " + thread1.getState());
+        System.out.println("2. start() 후 = thread1.getState() = " + thread1.getState());
 
         while (true) {
 //            System.out.println("while문 안 thread1.getState() = " + thread1.getState());
 
             if (thread1.getState() == Thread.State.TIMED_WAITING) {
-                System.out.println("thread1.getState() = " + thread1.getState());
+                System.out.println("3. thread1.getState() = " + thread1.getState());
                 break;
             }
         }
@@ -43,7 +43,7 @@ public class InterruptExample2 {
 //            System.out.println("while문 안 thread1.getState() = " + thread1.getState());
 
             if (thread1.getState() == Thread.State.RUNNABLE) {
-                System.out.println("thread1.getState() = " + thread1.getState());
+                System.out.println("4. interrupt() 후 = thread1.getState() = " + thread1.getState());
                 break;
             }
         }
@@ -52,7 +52,7 @@ public class InterruptExample2 {
 //            System.out.println("while문 안 thread1.getState() = " + thread1.getState());
 
             if (thread1.getState() == Thread.State.TERMINATED) {
-                System.out.println("thread1.getState() = " + thread1.getState());
+                System.out.println("5. thread1.getState() = " + thread1.getState());
                 break;
             }
         }
